@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/jee
+    http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
+
+	<bean id="jndiDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/gps" />
+	</bean>
+
+	<bean id="vehicleDao"
+		class="com.transworld.fleetview.springframework.VehicleDaoSpringBeanImpl"
+		scope="singleton">
+		<constructor-arg>
+			<ref bean="jndiDataSource" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="sessionManagerDao"
+		class="com.transworld.fleetview.springframework.SessionManagerDaoSpringBeanImpl"
+		scope="singleton">
+		<constructor-arg>
+			<ref bean="jndiDataSource" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="vehiclePositionsViewDataProvider"
+		class="com.transworld.fleetview.springframework.VehiclePositionsViewDataHelperSpringBeanImpl"
+		scope="singleton">
+	</bean>
+
+	<bean id="debriefSubmitViewDataProvider"
+		class="com.transworld.fleetview.springframework.DebriefSubmitViewDataHelperSpringBeanImpl"
+		scope="singleton">
+	</bean>
+
+	<bean id="customReportViewDataProvider"
+		class="com.transworld.fleetview.springframework.CustomReportViewDataHelperSpringBeanImpl"
+		scope="singleton"></bean>
+		
+	<bean id="disconnectionViewDataProvider"
+		class="com.transworld.fleetview.springframework.DisconnectionReportViewDataHelperSpringBeanImpl"
+		scope="singleton">
+	</bean>
+</beans>

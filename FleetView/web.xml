@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+<display-name>Vehicle Tracking System</display-name>
+<welcome-file-list>
+<welcome-file>iframe.html</welcome-file>
+</welcome-file-list>
+
+
+
+<!-- ... -->
+
+     <!-- Register the session counting event listener. -->
+     <listener>
+       <listener-class>
+        moreservlets.listeners.SessionCounter
+       </listener-class>
+     </listener>
+     <!-- ... -->
+<beans>
+    
+    <bean id="loginlogout" class="test.LoginLogout">
+	<property name="logintime">
+	<property name="logindate">
+	<property name="loginid">
+</bean>
+</beans>
+</web-app>

@@ -1,0 +1,361 @@
+<html>
+<head>
+<style type="text/css">
+
+#dropmenudiv{
+position:absolute;
+border:1px solid black;
+border-bottom-width: 0;
+font:normal 10.5px Verdana, Arial, Helvetica, sans-serif;
+line-height:18px;
+z-index:100;
+}
+
+#dropmenudiv a{
+width: 100%;
+display: block;
+text-indent: 3px;
+border-bottom: 1px solid black;
+padding: 1px 0;
+text-decoration: none;
+font-weight: bold;
+}
+
+#dropmenudiv a:hover{ /*hover background color*/
+background-color: #465ea6;
+}
+
+</style>
+
+<script type="text/javascript">
+
+/***********************************************
+* AnyLink Drop Down Menu-  Dynamic Drive (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+//Contents for menu 1
+var menu1=new Array()
+var menu2=new Array()	
+var menu3=new Array()	
+var menu4=new Array()	
+var menu5=new Array()
+var menu6=new Array()
+var menu7=new Array()
+var menu14=new Array()
+var menu9=new Array()
+var menu10=new Array()
+var menu11=new Array()
+var menu12=new Array()
+var menu15=new Array()
+var menu17=new Array()
+var menu28=new Array()
+var menu13=new Array()
+var menu20=new Array()
+
+menu6[0]='<a href="#"><iframe src="http://www.google.com/talk/service/badge/Show?tk=z01q6amlq1el67hss1jjq5euo7vvijm1drq6qfjn26k3ael2o3diegupigtqkq79bc043n0frrcbabnobdfrom1h0e6cd1ior7m0bhhgdfmonbu4unfkq0ubj8g0se9pclkdne6icbnpiarmurdgo4k0648bb7bsifr5t7cul4ci9307e88ovbau9ula72sf3ls&amp;w=300&amp;h=18" allowtransparency="true" frameborder="0" height="18" width="300"></iframe></a>'
+menu6[1]='<a href="#"><iframe src="http://www.google.com/talk/service/badge/Show?tk=z01q6amlquju874k7lik7lkq8lk4dlogd8545i44tcm2pinve3lj2b9qf2lp3piko89u4lt1u6goqnk9aj1tqkne341mc73ggaa5c8rual12u07d9mscn9d162lq7fs8f6qpraa8c7etqsglkt7d44ae7lgotgbualhl0q1alkuk8cip2itms8kbeffetm7iv24&amp;w=300&amp;h=18" allowtransparency="true" frameborder="0" height="18" width="300"></iframe></a>'
+menu6[2]='<a href="#"><iframe src="http://www.google.com/talk/service/badge/Show?tk=z01q6amlqgr9m46ka42ifsuh498at4nmlmakbdlrm4k5umdbiabv6d7u5ur9f6289lpniveduii45jrm6r35clcpacki1vhk7884ts3dr08ntqh6e2mklrc5kif21mvr7l9jheqck5phbp8ie9le0ea410qbn92buqpu6n9h24hgv302doj54kieqb1j44ks83g&amp;w=300&amp;h=18" allowtransparency="true" frameborder="0" height="18" width="300"></iframe></a>'
+
+
+
+
+		menu1[0]='<a href="castrolempmain.jsp">Current Position</a>'
+		//menu1[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+		menu1[1]='<a href="last24hours_castrolemp.jsp">Report For Last 1 Day</a>'
+		menu1[2]='<a href="last48hours_castrolemp.jsp">Report For Last 2 Days</a>'
+		menu1[3]='<a href="last7days_castrolemp.jsp">Report For Last 7 Days</a>'
+		menu1[4]='<a href="last15days_castrolemp.jsp">Report For Last 15 Days</a>'
+		menu1[5]='<a href="report_castrolemp.jsp">Custom Report</a>'
+		menu1[6]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+		menu1[7]='<a href="JRMReport.jsp">JRM Report</a>'
+		menu1[8]='<a href="tree.htm">ORG Chart</a>'
+		menu1[9]='<a href="sensorRep.jsp">Sensor Report</a>'	
+		//menu1[7]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+//menu1[6]='<a href="vehiclewaiting.jsp">Vehicle Waiting</a>'
+//menu1[8]='<a href="my_trips.jsp">My Trips</a>'
+//menu1[9]='<a href="checkconsignment.jsp">Track Consignment</a>'
+//menu1[10]='<a href="vehiclewisetrips.jsp">Vehicle Wise Trips</a>'
+
+menu10[0]='<a href="castrolempmain.jsp">Current Position</a>'
+//menu10[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+menu10[1]='<a href="last24hours_castrolemp.jsp">Report For Last 1 Day</a>'
+menu10[2]='<a href="last48hours_castrolemp.jsp">Report For Last 2 Days</a>'
+menu10[3]='<a href="last7days_castrolemp.jsp">Report For Last 7 Days</a>'
+menu10[4]='<a href="last15days_castrolemp.jsp">Report For Last 15 Days</a>'
+menu10[5]='<a href="report_castrolemp.jsp">Custom Report</a>'
+menu10[6]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+menu10[7]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+//menu10[8]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+//menu10[8]='<a href="map1.jsp">District Report</a>'
+menu10[8]='<a href="JRMReport.jsp">JRM Report</a>'
+menu10[9]='<a href="tree.htm">ORG Chart</a>'
+menu10[10]='<a href="sensorRep.jsp">Sensor Report</a>'
+
+
+//menu2[0]='<a href="journey.jsp">Started Journey</a>'
+//menu2[1]='<a href="completedjourney.jsp">Completed Journey</a>'
+//menu2[0]='<a href="trip_report.jsp">Trips Report</a>'	
+//menu2[1]='<a href="nontrip_report.jsp">Non Trips Report</a>'
+//menu2[3]='<a href="driverrating.jsp">Top/Bottom 20 Drivers</a>'
+menu2[0]='<a href="driverratingbydate.jsp">Driver Rating Report</a>'
+//menu2[5]='<a href="driver_wise_trip_details.jsp">Driver Wise Trip Report</a>'
+menu2[1]='<a href="loginhistory.jsp">Transporter Login Report</a>'
+//menu2[7]='<a href="tripentry.jsp">Add Trip / End Trip</a>'
+menu2[2]='<a href="vehdisprep.jsp"> Exception Analysis of Vehicles / Drivers</a>'
+//menu2[8]='<a href="trip_delay_report.jsp"> Trip Delay Report</a>'
+//menu2[8]='<a href="trip_billing_report.jsp"> Trip Billing Report</a>'
+//menu2[9]='<a href="driverwiseexceptions.jsp">Driver Wise Exception Report</a>'
+//menu2[10]='<a href="searchtrip.jsp">Custom Trip Report</a>'
+menu2[3]='<a href="driver_briefing.jsp">Driver Briefing/Debriefing Report</a>'
+///menu2[12]='<a href="driver_debriefing.jsp">Driver De-Briefing Report</a>'
+//menu2[13]='<a href="sptransprep.jsp">Specific Transp. Report</a>'
+menu2[4]='<a href="KPIReport.jsp">KPI Report</a>'
+menu2[5]='<a href="brifhistory.jsp">Driver Briefing History</a>'
+menu2[6]='<a href="brif_trinerbrifsum.jsp?trNm=Castrol&pgFrom=brif">Trainer History</a>'
+
+
+
+
+menu3[0]='<a href="location.jsp">Select Location</a>'
+//menu3[1]='<a href="currentlocation.jsp">Vehicle in Place</a>'
+menu3[1]='<a href="departed.jsp">Vehicle Departed</a>'	
+menu3[2]='<a href="arrived.jsp">Vehicle Arrived</a>'
+menu3[3]='<a href="vehicleavailable.jsp">Vehicle Available</a>'
+
+
+menu4[0]='<a href="currentlocation.jsp">Vehicle in My Location</a>'
+menu4[1]='<a href="departed.jsp">Vehicle Departed</a>'	
+menu4[2]='<a href="arrived.jsp">Vehicle Arrived</a>'
+menu4[3]='<a href="vehicleavailable.jsp">Vehicle Available (Waiting)</a>'
+
+//journey
+//menu5[0]='<a href="trans_trip_report.jsp">Trips Report</a>'	
+menu5[0]='<a href="nontrans_trip_report.jsp">Non Trips Report</a>'
+menu5[1]='<a href="driverrating.jsp">Top/Bottom 20 Drivers</a>'
+//menu5[3]='<a href="my_trips.jsp">My Trips</a>'
+//menu5[3]='<a href="trans_trip_billing_report.jsp">Trip Billing Report</a>'
+menu5[2]='<a href="trans_driverwiseexceptions.jsp">Driver Wise Exception Report</a>'
+//menu5[5]='<a href="trans_searchtrip.jsp">Custom Trip Report</a>'
+//menu5[6]='<a href="vehiclewisetrips.jsp">Vehicle Wise Trips</a>'
+menu5[3]='<a href="brif_trinerbrifsum.jsp">Trainer History</a>'
+
+menu7[0]='<a href="kmdetails.jsp">Report</a>'
+menu7[1]='<a href="contrkmdets.jsp">Vendor Entry Form</a>'
+menu7[2]='<a href="exlkmdets.jsp">EXL Entry Form</a>'
+menu7[3]='<a href="vehnotreported.jsp">Vehicle Not Reported</a>'
+
+		
+//menu14[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+menu14[0]='<a href="stopanalysis.jsp">Stop Analysis</a>'
+menu14[1]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+menu14[2]='<a href="weeklygraph_report.jsp">Graph Analysis(Exceptions)</a>'
+//menu14[3]='<a href="TripTracker.jsp">Trip Tracker</a>'
+menu14[4]='<a href="custfuelfillreport.jsp">Fuel Report</a>'
+menu14[5]='<a href="Odometer.jsp">Odometer Report</a>'
+
+
+///////////////// dashboard for admin (ie typevalue=ALL)/////////////////////
+	//menu8[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+menu15[0]='<a href="stopanalysis.jsp">Stop Analysis</a>'
+menu15[1]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+menu15[2]='<a href="weeklygraph_report.jsp">Graph Analysis(Exceptions)</a>'
+//me15u8[3]='<a href="TripTracker.jsp">Trip Tracker</a>'
+menu15[4]='<a href="custfuelfillreport.jsp">Fuel Report</a>'
+menu15[5]='<a href="Odometer.jsp">Odometer Report</a>'
+menu15[6]='<a href="VehicleIdleReport.jsp">Vehicle Intimation Report</a>'
+menu15[7]='<a href="CameraSummaryReport.jsp">Camera Report</a>'
+
+///////////////////////////////////////////
+menu9[0]='<a href="fuelentry.jsp">Fuel Entry</a>'
+menu9[1]='<a href="changepass.jsp">Personal Details</a>' 
+menu9[2]='<a href="GeofenceLocation.jsp">Geofence Locations</a>'
+menu9[3]='<a href="EditEmpName.jsp">Add/Edit Employee</a>'
+menu9[4]='<a href="paymentEntryForm.jsp">Payment Entry</a>'
+menu9[5]='<a href="sensorlabelentry.jsp">Sensor Label Entry</a>'
+
+	
+menu28[0]='<a href="VehicleIdleReport.jsp">Vehicle Intimation Report</a>'
+	menu28[1]='<a href="VehicleOfflineReport.jsp">Vehicle Offline Report</a>'
+		menu28[2]='<a href="ndintimationreport.jsp">ND Intimation Report</a>'
+
+	menu13[0]='<a href="currentposition.jsp">Current Position</a>'
+		//menu13[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+// 		menu13[1]='<a href="reportbyplace.jsp">Vehicles In Geofenced Location</a>'
+		menu13[1]='<a href="last24hours.jsp">Report For Last 1 Day</a>'
+		menu13[2]='<a href="last48hours.jsp">Report For Last 2 Days</a>'
+		menu13[3]='<a href="last7days.jsp">Report For Last 7 Days</a>'
+		menu13[4]='<a href="last15days.jsp">Report For Last 15 Days</a>'
+		menu13[5]='<a href="report.jsp">Custom Report</a>'
+// 		menu13[7]='<a href="vehiclewaiting.jsp?waithrs=4hrs">Vehicle Waiting</a>'
+// 		menu13[8]='<a href="my_trips.jsp">My Trips</a>'
+// 		menu13[9]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+		//menu13[11]='<a href="HeadLightOnOf.jsp">Head Light On Off Report</a>'
+// 		menu13[10]='<a href="VehicleMentananceReport.jsp">Vehicle Maintenance Report</a>'
+// 		menu13[11]='<a href="smsreport.jsp">SMSReport</a>'
+		menu13[6]='<a href="dailystatusreport.jsp">Daily Status Report</a>'
+		menu13[7]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+// 		menu13[14]='<a href="VehMasterReport.jsp">Vehicle Master Report</a>'
+		//menu13[14]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+		//menu13[14]='<a href="CastrolMonthlyTripReportLevel1.jsp">Castrol Monthly Report</a>'
+		//menu13[15]=	'<a href="ValueZeroContestReport.jsp">Value Zero Contest 2011</a>'
+		//menu13[16]='<a href="jrmtoday.jsp">JRM Route</a>'
+// 		menu13[15]='<a href="JRMReport.jsp">JRM Report</a>'
+		menu13[8]='<a href="tree.htm">ORG Chart</a>'
+		menu14[9]='<a href="sensorRep.jsp">Sensor Report</a>'	
+// 		menu13[17]='<a href="userreport.jsp">User Creation Report</a>'
+// 		menu13[18]='<a href="FleetSummaryErp_All.jsp">Fleet Summary Report</a>'
+
+
+
+
+
+menu20[0]='<a href="changepass.jsp">Personal Details</a>' 
+		menu20[1]='<a href="fuelentry.jsp">Fuel Entry</a>'
+		menu20[2]='<a href="GeofenceLocation.jsp">Geofence Locations</a>'
+		menu20[3]='<a href="vehmaintenance.jsp">Vehicle Maintenance Entry</a>'
+		menu20[4]='<a href="paymentEntryForm.jsp">Payment Entry</a>'
+		menu20[5]='<a href="VehMasterEntryForm.jsp">Vehicle Master Entry Form</a>'
+		menu20[6]='<a href="createnewuser.jsp">Create User</a>'
+		menu20[7]='<a href="sensorlabelentry.jsp">Sensor Label Entry</a>'		
+
+
+
+		
+	var menuwidth='165px' //default menu width
+		var menubgcolor='#9db5e5'  //menu bgcolor
+		var disappeardelay=250  //menu disappear speed onMouseout (in miliseconds)
+		var hidemenu_onclick="yes" //hide menu when user clicks within menu?
+			var menuwidth='165px' //default menu width
+				var menubgcolor='lightyellow'  //menu bgcolor
+				var disappeardelay=250  //menu disappear speed onMouseout (in miliseconds)
+				var hidemenu_onclick="yes" //hide menu when user clicks within menu?
+
+/////No further editting needed
+
+var ie4=document.all
+var ns6=document.getElementById&&!document.all
+
+if (ie4||ns6)
+//document.write('<div id="navigation" style="visibility:hidden; onMouseover="clearhidemenu()" onMouseout="dynamichide(event)"></div>')
+document.write('<div id="dropmenudiv" style="visibility:hidden;width:'+menuwidth+';background-color:'+menubgcolor+'" onMouseover="clearhidemenu()" onMouseout="dynamichide(event)"></div>')
+function getposOffset(what, offsettype){
+var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+var parentEl=what.offsetParent;
+while (parentEl!=null){
+totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+parentEl=parentEl.offsetParent;
+}
+return totaloffset;
+}
+
+
+function showhide(obj, e, visible, hidden, menuwidth){
+if (ie4||ns6)
+dropmenuobj.style.left=dropmenuobj.style.top="-500px"
+if (menuwidth!=""){
+dropmenuobj.widthobj=dropmenuobj.style
+dropmenuobj.widthobj.width=menuwidth
+}
+if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover")
+obj.visibility=visible
+else if (e.type=="click")
+obj.visibility=hidden
+}
+
+function iecompattest(){
+return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+}
+
+function clearbrowseredge(obj, whichedge){
+var edgeoffset=0
+if (whichedge=="rightedge"){
+var windowedge=ie4 && !window.opera? iecompattest().scrollLeft+iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+dropmenuobj.contentmeasure=dropmenuobj.offsetWidth
+if (windowedge-dropmenuobj.x < dropmenuobj.contentmeasure)
+edgeoffset=dropmenuobj.contentmeasure-obj.offsetWidth
+}
+else{
+var topedge=ie4 && !window.opera? iecompattest().scrollTop : window.pageYOffset
+var windowedge=ie4 && !window.opera? iecompattest().scrollTop+iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+dropmenuobj.contentmeasure=dropmenuobj.offsetHeight
+if (windowedge-dropmenuobj.y < dropmenuobj.contentmeasure){ //move up?
+edgeoffset=dropmenuobj.contentmeasure+obj.offsetHeight
+if ((dropmenuobj.y-topedge)<dropmenuobj.contentmeasure) //up no good either?
+edgeoffset=dropmenuobj.y+obj.offsetHeight-topedge
+}
+}
+return edgeoffset
+}
+
+function populatemenu(what){
+if (ie4||ns6)
+dropmenuobj.innerHTML=what.join("")
+}
+
+
+function dropdownmenu(obj, e, menucontents, menuwidth){
+if (window.event) event.cancelBubble=true
+else if (e.stopPropagation) e.stopPropagation()
+clearhidemenu()
+dropmenuobj=document.getElementById? document.getElementById("dropmenudiv") : dropmenudiv
+populatemenu(menucontents)
+
+if (ie4||ns6){
+showhide(dropmenuobj.style, e, "visible", "hidden", menuwidth)
+dropmenuobj.x=getposOffset(obj, "left")
+dropmenuobj.y=getposOffset(obj, "top")
+dropmenuobj.style.left=dropmenuobj.x-clearbrowseredge(obj, "rightedge")+"px"
+dropmenuobj.style.top=dropmenuobj.y-clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+"px"
+}
+
+return clickreturnvalue()
+}
+function clickreturnvalue(){
+if (ie4||ns6) return false
+else return true
+}
+
+function contains_ns6(a, b) {
+while (b.parentNode)
+if ((b = b.parentNode) == a)
+return true;
+return false;
+}
+
+function dynamichide(e){
+if (ie4&&!dropmenuobj.contains(e.toElement))
+delayhidemenu()
+else if (ns6&&e.currentTarget!= e.relatedTarget&& !contains_ns6(e.currentTarget, e.relatedTarget))
+delayhidemenu()
+}
+
+function hidemenu(e){
+if (typeof dropmenuobj!="undefined"){
+if (ie4||ns6)
+dropmenuobj.style.visibility="hidden"
+}
+}
+
+function delayhidemenu(){
+if (ie4||ns6)
+delayhide=setTimeout("hidemenu()",disappeardelay)
+}
+
+function clearhidemenu(){
+if (typeof delayhide!="undefined")
+clearTimeout(delayhide)
+}
+
+if (hidemenu_onclick=="yes")
+document.onclick=hidemenu
+
+</script>
+</head>
+<body>
+<div align="left"></div>
+
+
+</body>
+</html>

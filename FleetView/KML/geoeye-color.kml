@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+
+<NetworkLink>
+  <name>GeoEye-Ikonos_1m</name>
+  <Style>
+    <ListStyle>
+      <listItemType>checkHideChildren</listItemType>
+    </ListStyle>
+  </Style>
+  <Region>
+    <LatLonAltBox>
+      <north>38.98382127</north>
+      <south>37.98073947</south>
+      <east>-118.89211714</east>
+      <west>-119.55456376</west>
+    </LatLonAltBox>
+    <Lod>
+      <minLodPixels>0</minLodPixels>
+      <maxLodPixels>-1</maxLodPixels>
+    </Lod>
+  </Region>
+  <Link>
+    <href>http://s3-external-1.amazonaws.com/Fossett-RGB/GeoEye_RGB/index.kml</href>
+    </Link>
+</NetworkLink>
+</kml>

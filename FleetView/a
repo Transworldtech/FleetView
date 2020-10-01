@@ -1,0 +1,2567 @@
+<%@ include file="headernew.jsp" %>
+<%
+	response.setHeader("Cache-Control","no-cache");
+  	response.setHeader("Pragma","no-cache");
+  	response.setDateHeader ("Expires", 0);
+ %>
+ 
+<script type="text/javascript">
+
+function toggleDetails(id, show)
+{
+var popup = document.getElementById("popup"+id);
+if (show) {
+popup.style.visibility = "visible";
+popup.setfocus();
+
+} else {
+popup.style.visibility = "hidden";
+}
+}
+</script>
+<style>
+.popup {
+background-color: #98AFC7;
+position: absolute;
+visibility: hidden;
+
+.popupnew {
+background-color: #98AFC7;
+position: absolute;
+visibility: visible;
+}
+</style>
+
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="js/graph.js"></SCRIPT>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>castrolTotalTrips</title>
+</head>
+<body>
+<%!
+	Connection conn,conn1;
+	Statement st,st1,st2,st3,st4,st5,st6,st7,st8,stt,st9,st10,st11,sttt,stbrief,stplace,stdebrief,st12,sten,stst,stbt,sten1,sten2,sten3,stst1,sts2,sts3,stbt1,stbt2,stbt3;
+	String fromdate, todate,sql,sql1,sql2,sql3,sql4,sql5,sql6,sql7,sqll,sqlll,sqlplace,sql8,sql9,sqlbrief,sqldebrief,datenew1,datenew2;
+	NumberFormat nf = DecimalFormat.getNumberInstance();
+	
+%>
+<form name="dateform" action="" method="post">
+<table border="1" width="100%" class="stats">
+<tr>
+<td>
+<B>Trip categorization By  : </b><select name="sortby" style="">
+	<option value="trans" selected="selected" >Transporterwise</option>
+	<option value="location" >Start Locationwise</option>
+	<option value="totaltrips" >Total Trips</option>
+</select>
+</td>
+<td> <input type="submit" name="submit" id="submit" value="submit"></td>
+</tr>
+</table>
+<table border="0" width="100%" class="stats">
+<%
+//String sortby=request.getParameter("sortby");
+//System.out.println("sortby--->"+sortby);
+
+//out.println("\nsortby-===-->"+sortby);
+if(!(null==request.getQueryString()))
+{
+try
+{
+	NumberFormat nf = DecimalFormat.getInstance();
+	nf.setMaximumFractionDigits(2);
+	nf.setMinimumFractionDigits(2);
+	int kmcountall,kmcount,tripcount,drivercount,tripcountall,drivercountall,vehcount,vehcountall,oscount,oscountall,racount,racountall,rdcount,rdcountall,cdcount,cdcountall,ndcount,ndcountall,countlatency,latency,durationall,duration;
+	String startplace,StartCode;
+	double ratingcount,ratingcountall;
+	double Accelaration1=0.0,Decelaration1=0.0,OverSpeed1=0.0;
+	String data1, data2,showdate1,showdate,Owner,datenew1,datenew2,transporter,thename,sTripID="",cTripID="",TripID="";
+	String fromdate="", todate="",sql="",sql1="",sql2="",sql3="",sql4="",sql5="",sql6="",sql7="";
+	double ss=0.00,aa=0.00,rr=0.00,rt=0.00;
+	
+	double rtcount=0.00,dtcount=0.00, dtcount1=0.00;
+	double rating1=0.00,rating=0.00;
+	int i=0;
+	String  vv="",ownerNm="",counDriveYesNo=null,ntDriveYesNo=null,sortby="-";
+	int  stcount=0, runDuration=0,osduration=0,osduration1=0,tpcount=0,tpcount1=0,dcount=0,dcount1=0,vcount=0, vcount1=0,mydtcount=0,mydtcount1=0;
+	int oscount1=0, racount1=0,rdcount1=0, ndcount1=0, stcount1=0,cdcount1=0,transportercount=0,runDuration1=0;
+	int pbrief,pdebrief,totpbrief,totpdebrief;
+	thename=request.getParameter("thename");
+	fromdate=request.getParameter("fromdate");
+	todate=request.getParameter("todate");
+	String Transporter=session.getAttribute("usertypevalue").toString();
+	 sortby=request.getParameter("sortby");
+	if(!(null==sortby))
+	{
+		if(sortby.equals("trans"))
+		{
+			if(thename.equals("started"))
+			{
+				%>
+				<tr><td><b><font size="2">Transporter Wise Report Of Castrol Monthly Report For Started Trips</font></b></td></tr>
+				<%
+			}
+			else if(thename.equals("ended"))
+			{
+				%>
+				<tr><td><b><font size="2">Transporter Wise Report Of Castrol Monthly Report For Ended Trips</font></b></td></tr>
+				<%
+			}
+			else if(thename.equals("both"))
+			{
+				%>
+				<tr><td><b><font size="2">Transporter Wise Report Of Castrol Monthly Report For Started & Ended Trips Trips</font></b></td></tr>
+				<%
+			}
+		}
+		else if(sortby.equals("location"))
+		{
+			if(thename.equals("started"))
+			{
+				%>
+				<tr><td><b><font size="2">LocationWise Report Of Castrol Monthly Report For Started Trips</font></b></td></tr>
+				<%
+			}
+			else if(thename.equals("ended"))
+			{
+				%>
+				<tr><td><b><font size="2">LocationWise Report Of Castrol Monthly Report For Ended Trips</font></b></td></tr>
+				<%
+			}
+			else if(thename.equals("both"))
+			{
+				%>
+				<tr><td><b><font size="2">LocationWise Report Of Castrol Monthly Report For Started & Ended Trips Trips</font></b></td></tr>
+				<%
+			}
+		}
+		else
+		{
+			if(thename.equals("started"))
+			{
+				%>
+				<tr><td><b><font size="2">All Trip Report Of Castrol Monthly Report For Started Trips</font></b></td></tr>
+				<%
+			}
+			else if(thename.equals("ended"))
+			{
+				%>
+				<tr><td><b><font size="2">All Trip Report Of Castrol Monthly Report For Ended Trips</font></b></td></tr>
+				<%
+			}
+			else if(thename.equals("both"))
+			{
+				%>
+				<tr><td><b><font size="2">All Trip Report Of Castrol Monthly Report For Started & Ended Trips Trips</font></b></td></tr>
+				<%
+			}
+		}
+	}
+	Class.forName(MM_dbConn_DRIVER); 
+	conn = DriverManager.getConnection(MM_dbConn_STRING,MM_dbConn_USERNAME,MM_dbConn_PASSWORD);
+	conn1 = DriverManager.getConnection(MM_dbConn_STRING1,MM_dbConn_USERNAME,MM_dbConn_PASSWORD);	
+
+	st=conn.createStatement();
+	st1=conn.createStatement();
+	st2=conn.createStatement();
+	st3=conn.createStatement();
+	st4=conn.createStatement();
+	st5=conn.createStatement();
+	st6=conn.createStatement();
+	st7=conn.createStatement();
+	st8=conn.createStatement();
+	st9=conn.createStatement();
+	st10=conn.createStatement();
+	st11=conn.createStatement();
+	st12=conn.createStatement();
+	stt=conn.createStatement();
+	sttt=conn.createStatement();
+	stbrief=conn.createStatement();
+	stdebrief=conn.createStatement();
+	stplace=conn.createStatement();
+	sten=conn.createStatement();
+	stst=conn.createStatement();
+	stst1=conn.createStatement();
+	//stst2=conn.createStatement();
+	//stst3=conn.createStatement();
+	stbt=conn.createStatement();
+	stbt1=conn.createStatement();
+	stbt2=conn.createStatement();
+	stbt3=conn.createStatement();
+	sten1=conn.createStatement();
+	sten2=conn.createStatement();
+	sten3=conn.createStatement();
+if(!(null==thename))
+{ 
+		//*********************************
+	
+	if(thename.equalsIgnoreCase("ended"))
+	{
+		// In stared loop all data is come from t_ complited journey..
+
+		if(sortby.equalsIgnoreCase("location" ))
+		{
+	
+		
+	%>
+		<table border="1" width="100%" class="stats">
+		<tr>
+		<td  class="hed" rowspan="2"> Sr.</td>
+		<td  class="hed" rowspan="2"> Origin</td>
+		<td  class="hed" rowspan="2"> Trips</td>
+		<td  class="hed" rowspan="2"> Drivers</td>
+		<td  class="hed" rowspan="2"> Vehicles</td>
+		<td  class="hed" rowspan="2"> Km. Travelled</td>
+		<td  class="hed" colspan="3"> Process Violations</td>
+		<td  class="hed" colspan="2"> Policy Violations</td>
+		<td  class="hed" rowspan="2"> Briefed Trips</td>
+		<td  class="hed" rowspan="2"> De-Briefed Trips</td>
+		<td  class="hed" rowspan="2"> Rating</td>
+		</tr>		
+		<tr>
+		<td  class="hed"> OS Duration<br>(Sec)</br></td>
+		<td  class="hed"> RA</td>
+		<td  class="hed"> RD</td>
+		<td  class="hed"> CD</td>
+		<td  class="hed"> ND</td>
+		</tr>
+		<%
+		int k=1;			
+		kmcountall=0;tripcountall=0;drivercountall=0;ratingcountall=0.0;vehcountall=0;oscountall=0;racountall=0;
+		rdcountall=0;cdcountall=0;ndcountall=0;	countlatency=0;	durationall=0;int j=0;kmcount=0;tripcount=0;
+		totpbrief=0;totpdebrief=0;
+		sqll="select Distinct(StartCode) from t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' order by OwnerName Asc";
+	//	System.out.println(sqll);
+		ResultSet rstt=stt.executeQuery(sqll);
+		while(rstt.next())
+		{
+			drivercount=0;
+			ratingcount=0.0;
+			vehcount=0;
+			oscount=0;
+			racount=0;
+			rdcount=0;
+			cdcount=0;
+			ndcount=0;
+			latency=0;
+			duration=0;startplace="-";StartCode="-";
+			pbrief=0;pdebrief=0;
+			startplace=rstt.getString("StartCode");
+			sqlplace="select StartPlace from t_completedjourney where StartCode='"+startplace+"' limit 1";
+			//System.out.println(sqll);
+			ResultSet rstplace=stplace.executeQuery(sqlplace);
+			while(rstplace.next())
+			{
+			StartCode=rstplace.getString("StartPlace");
+			}
+		sql8 ="select count(Distinct(TripID)) as TripID,count(distinct(DriverID)) as Driver,count(distinct(Vehid)) as Vehid from  t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"'" ;
+		ResultSet rs8 = st8.executeQuery(sql8);
+		while(rs8.next())
+		{
+			drivercount=rs8.getInt("Driver");
+			drivercountall=drivercountall+drivercount;
+			tripcount=rs8.getInt("TripID");
+			tripcountall=tripcountall+tripcount;
+			vehcount=rs8.getInt("Vehid");
+			vehcountall=vehcountall+vehcount;
+		}	
+			
+			sqlll="select Distinct(TripID) from t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"'";
+			ResultSet rsttt=sttt.executeQuery(sqlll);
+			while(rsttt.next())
+			{
+				oscount=0;
+				racount=0;
+				rdcount=0;
+				cdcount=0;
+				ndcount=0;
+				latency=0;
+				kmcount=0;
+				duration=0;
+				sql4="select KmTravelled,RACount,RDCount,OSDuration,CRCount,NDCount from  t_completedjourney where TripID='"+rsttt.getString("TripID")+"' limit 1";
+				ResultSet rstkm=st4.executeQuery(sql4);
+				while(rstkm.next())
+				{
+					kmcount+=rstkm.getInt("KmTravelled");
+					kmcountall=kmcountall+kmcount;
+					oscount+=rstkm.getInt("OSDuration");
+					oscountall=oscountall+oscount;
+					racount+=rstkm.getInt("RACount");
+					racountall=racountall+racount;
+					rdcount+=rstkm.getInt("RDCount");
+					rdcountall=rdcountall+rdcount;
+					duration+=rstkm.getInt("OSDuration");
+					durationall+=durationall+duration;
+					if(rstkm.getString("CRCount").equals("Yes"))
+					{
+						cdcount++;
+					}
+					if(rstkm.getString("NDCount").equals("Yes"))
+					{
+						ndcount++;
+					}
+				}
+			
+									
+			}
+			sqlbrief="SELECT count(Distinct(`tripid`)) as count FROM `t_briefing` WHERE tripid in (select Distinct(TripID) from t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"')";
+			ResultSet rstbrief=stbrief.executeQuery(sqlbrief);
+			while(rstbrief.next())
+			{
+				pbrief=rstbrief.getInt("count");
+				totpbrief=totpbrief+pbrief;
+			}
+			sqldebrief="SELECT count(Distinct(`tripid`)) as count FROM `t_debriefing` WHERE tripid in (select Distinct(TripID) from t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"')";
+			ResultSet rstdebrief=stdebrief.executeQuery(sqldebrief);
+			while(rstdebrief.next())
+			{
+				pdebrief=rstdebrief.getInt("count");
+				totpdebrief=totpdebrief+pdebrief;
+			}
+			
+		%>	
+		<tr>
+		<td><%=k%></td>
+		<td><div align="left"><a href="#" onclick="javascript:window.open('LocationwiseTrips.jsp?startplace=<%=StartCode.replace("&","and")%>&date1=<%=fromdate %>&date2=<%=todate %>&triptype=<%=thename%>');"><%=StartCode%></a>
+		</div></td>
+		
+		<td>
+		<div align="right">
+		<%
+			out.print(tripcount);
+		%>	
+		</div></td>
+		<td>
+		<div align="right">
+		<%
+			out.print(drivercount);
+		%>
+		</div></td>
+		<td>
+		<div align="right">
+		<%
+			out.print(vehcount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(kmcount);
+		%>
+		</div>	
+		</td>
+		<td><div align="right">
+		<%
+			out.print(oscount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(racount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(rdcount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+		
+			if(cdcount >0)
+			{
+			cdcountall++;
+			out.print("Yes");
+			}
+			else
+			{
+			out.print("No");
+			}
+		
+		
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+		if(ndcount >0)
+			{
+			ndcountall++;
+			out.print("Yes");
+			}
+			else
+			{
+			out.print("No");
+			}
+			
+		%>
+		</div></td>
+		<td><%=pbrief%></td>
+		<td><%=pdebrief%></td>
+		<td>
+		<div align="right">
+		<%
+			Accelaration1=0;
+			Decelaration1=0;
+			OverSpeed1=0;
+		if(racount > 0 && kmcount > 0)
+		{
+			Accelaration1=((double)racount/(double)kmcount)*100;
+		}
+		if(rdcount > 0 && kmcount > 0)
+		{
+			Decelaration1=((double)rdcount/(double)kmcount)*100;
+		}
+		if(duration > 0 && kmcount> 0)
+		{
+			OverSpeed1 =(((double)duration/10)/(double)kmcount)*100;
+		}
+		ratingcount=Accelaration1+Decelaration1+OverSpeed1;
+		ratingcountall=ratingcountall+ratingcount;
+		
+		if(kmcount > 0)
+		{
+		out.print(nf.format(ratingcount));	
+		}
+		else
+		{
+			out.print("NA");
+		}
+		%>
+		</div></td>
+		</tr>			
+		<%
+		k++;
+		
+		}
+		%>	
+		<tr>
+		<td class="hed" colspan="2">Total :-</td>
+		<td class="hed"><div align="right"><%=tripcountall%></div></td>
+		<td class="hed"><div align="right"><%=drivercountall%></div></td>
+		<td class="hed"><div align="right"><%=vehcountall%></div></td>
+		<td class="hed"><div align="right"><%=kmcountall%></div></td>
+		<td class="hed"><div align="right"><%=oscountall%></div></td>
+		<td class="hed"><div align="right"><%=racountall%></div></td>
+		<td class="hed"><div align="right"><%=rdcountall%></div></td>
+		<td class="hed"><div align="right"><%=cdcountall%></div></td>
+		<%
+			if(ndcountall > 0)
+			{
+				%>
+				<td class="hed"><div align="right">Yes</div></td>
+				<%
+			}
+			else
+			{
+				%>
+				<td class="hed"><div align="right">No</div></td>
+				<%
+			}
+		%>
+			<td class="hed"><div align="right"><%=totpbrief%></div></td>
+			<td class="hed"><div align="right"><%=totpdebrief%></div></td>
+				
+				<td class="hed"><div align="right">
+		<%
+		
+		if(kmcountall!=0)
+		{
+			aa=Double.valueOf(racountall);
+			aa=(aa/kmcountall);
+			aa=aa*100;
+
+			rr=Double.valueOf(rdcountall);
+			rr=(rr/kmcountall);
+			rr=rr*100;
+			
+			ss=Double.valueOf(oscountall/10);
+			ss=ss/kmcountall;
+			ss=ss*100;
+			
+			rt=aa+rr+ss;;
+		out.print(nf.format(rt));
+		}
+		else
+		{
+			out.print("NA");
+		}
+		%></div></td>
+		</tr>
+		</table>
+		<% 
+		}
+
+		else if(sortby.equalsIgnoreCase("trans" ))
+		{  
+			///*********************** **************TRANSPORTER *****
+		%>
+		<table border="1" width="100%" class="stats">
+		<tr>
+		<td  class="hed" rowspan="2"> Sr.</td>
+		<td  class="hed" rowspan="2"> Transporter</td>
+		<td  class="hed" rowspan="2"> Trips</td>
+		<td  class="hed" rowspan="2"> Drivers</td>
+		<td  class="hed" rowspan="2"> Vehicles</td>
+		<td  class="hed" rowspan="2"> Km. Travelled</td>
+		<td  class="hed" colspan="3"> Process Violations</td>
+		<td  class="hed" colspan="2"> Policy Violations</td>
+		<td  class="hed" rowspan="2"> Briefed Trips</td>
+		<td  class="hed" rowspan="2"> De-Briefed Trips</td>
+		<td  class="hed" rowspan="2"> Rating</td>
+		</tr>		
+		<tr>
+		<td  class="hed"> OS Duration<br>(Sec)</br></td>
+		<td  class="hed"> RA</td>
+		<td  class="hed"> RD</td>
+		<td  class="hed"> CD</td>
+		<td  class="hed"> ND</td>
+		</tr>
+		<%
+		int k=1;			
+		kmcountall=0;tripcountall=0;drivercountall=0;ratingcountall=0.0;vehcountall=0;oscountall=0;racountall=0;
+		rdcountall=0;cdcountall=0;ndcountall=0;	countlatency=0;	durationall=0;int j=0;kmcount=0;tripcount=0;
+		totpbrief=0;totpdebrief=0;
+		sqll="select Distinct(OwnerName) from t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' order by OwnerName Asc";
+		//System.out.println(sqll);
+		ResultSet rstt=stt.executeQuery(sqll);
+		while(rstt.next())
+		{
+			drivercount=0;
+			ratingcount=0.0;
+			vehcount=0;
+			oscount=0;
+			racount=0;
+			rdcount=0;
+			cdcount=0;
+			ndcount=0;
+			latency=0;
+			duration=0;startplace="-";StartCode="-";
+			pbrief=0;
+			pdebrief=0;
+			startplace=rstt.getString("OwnerName");
+			
+		sql8 ="select count(Distinct(TripID)) as TripID,count(distinct(DriverID)) as Driver,count(distinct(Vehid)) as Vehid from  t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"'" ;
+		ResultSet rs8 = st8.executeQuery(sql8);
+		while(rs8.next())
+		{
+			drivercount=rs8.getInt("Driver");
+			drivercountall=drivercountall+drivercount;
+			tripcount=rs8.getInt("TripID");
+			tripcountall=tripcountall+tripcount;
+			vehcount=rs8.getInt("Vehid");
+			vehcountall=vehcountall+vehcount;
+		}	
+			
+			sqlll="select Distinct(TripID) from t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"'";
+			ResultSet rsttt=sttt.executeQuery(sqlll);
+			while(rsttt.next())
+			{
+				oscount=0;
+				racount=0;
+				rdcount=0;
+				cdcount=0;
+				ndcount=0;
+				latency=0;
+				kmcount=0;
+				duration=0;
+				
+				sql4="select KmTravelled,RACount,RDCount,OSDuration,CRCount,NDCount from t_completedjourney where TripID='"+rsttt.getString("TripID")+"' limit 1";
+				ResultSet rstkm=st4.executeQuery(sql4);
+				while(rstkm.next())
+				{
+					kmcount+=rstkm.getInt("KmTravelled");
+					kmcountall=kmcountall+kmcount;
+					oscount+=rstkm.getInt("OSDuration");
+					oscountall=oscountall+oscount;
+					racount+=rstkm.getInt("RACount");
+					racountall=racountall+racount;
+					rdcount+=rstkm.getInt("RDCount");
+					rdcountall=rdcountall+rdcount;
+					duration+=rstkm.getInt("OSDuration");
+					durationall+=durationall+duration;
+					if(rstkm.getString("CRCount").equals("Yes"))
+					{
+						cdcount++;
+					}
+					if(rstkm.getString("NDCount").equals("Yes"))
+					{
+						ndcount++;
+					}
+				}
+			}
+			sqlbrief="SELECT count(Distinct(`tripid`)) as count FROM `t_briefing` WHERE tripid in (select Distinct(TripID) from t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"')";
+			ResultSet rstbrief=stbrief.executeQuery(sqlbrief);
+			while(rstbrief.next())
+			{
+				pbrief=rstbrief.getInt("count");
+				totpbrief=totpbrief+pbrief;
+			}
+			sqldebrief="SELECT count(Distinct(`tripid`)) as count FROM `t_debriefing` WHERE tripid in (select Distinct(TripID) from t_completedjourney where EndDate between '"+fromdate+"' and '"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"')";
+			ResultSet rstdebrief=stdebrief.executeQuery(sqldebrief);
+			while(rstdebrief.next())
+			{
+				pdebrief=rstdebrief.getInt("count");
+				totpdebrief=totpdebrief+pdebrief;
+			}	
+		
+		%>	
+		<tr>
+		<td><%=k%></td>
+		<td><div align="left"><a href="castrol_driver_transporter.jsp?transporter=<%=startplace%>&data1=<%=fromdate%>&data2=<%=todate%>&triptype=<%=thename%>"><b><%=startplace%></b></a>
+		</div></td>
+		
+		<td>
+		<div align="right">
+		<%
+			out.print(tripcount);
+		%>	
+		</div></td>
+		<td>
+		<div align="right">
+		<%
+			out.print(drivercount);
+		%>
+		</div></td>
+		<td>
+		<div align="right">
+		<%
+			out.print(vehcount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(kmcount);
+		%>
+		</div>	
+		</td>
+		<td><div align="right">
+		<%
+			out.print(oscount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(racount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(rdcount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+	
+			if(cdcount >0)
+			{
+			cdcountall++;
+			out.print("Yes");
+			}
+			else
+			{
+			out.print("No");
+			}
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			if(ndcount >0)
+			{
+			ndcountall++;
+			out.print("Yes");
+			}
+			else
+			{
+			out.print("No");
+			}
+				
+		%>
+		</div></td>
+		<td><%=pbrief%></td>
+		<td><%=pdebrief%></td>
+		<td>
+		<div align="right">
+		<%
+			Accelaration1=0;
+			Decelaration1=0;
+			OverSpeed1=0;
+		if(racount > 0 && kmcount > 0)
+		{
+			Accelaration1=((double)racount/(double)kmcount)*100;
+		}
+		if(rdcount > 0 && kmcount > 0)
+		{
+			Decelaration1=((double)rdcount/(double)kmcount)*100;
+		}
+		if(duration > 0 && kmcount> 0)
+		{
+			OverSpeed1 =(((double)duration/10)/(double)kmcount)*100;
+		}
+		ratingcount=Accelaration1+Decelaration1+OverSpeed1;
+		ratingcountall=ratingcountall+ratingcount;
+		
+		if(kmcount > 0)
+		{
+		out.print(nf.format(ratingcount));	
+		}
+		else
+		{
+			out.print("NA");
+		}
+		%>
+		</div></td>
+		</tr>			
+		<%
+		k++;
+		}
+		%>	
+		<tr>
+		<td class="hed" colspan="2">Total :-</td>
+		<td class="hed"><div align="right"><%=tripcountall%></div></td>
+		<td class="hed"><div align="right"><%=drivercountall%></div></td>
+		<td class="hed"><div align="right"><%=vehcountall%></div></td>
+		<td class="hed"><div align="right"><%=kmcountall%></div></td>
+		<td class="hed"><div align="right"><%=oscountall%></div></td>
+		<td class="hed"><div align="right"><%=racountall%></div></td>
+		<td class="hed"><div align="right"><%=rdcountall%></div></td>
+		<td class="hed"><div align="right"><%=cdcountall%></div></td>
+		<%
+			if(ndcountall > 0)
+			{
+				%>
+				<td class="hed"><div align="right">Yes</div></td>
+				<%
+			}
+			else
+			{
+				%>
+				<td class="hed"><div align="right">No</div></td>
+				<%
+			}
+		%>
+			<td class="hed"><div align="right"><%=totpbrief%></div></td>
+			<td class="hed"><div align="right"><%=totpdebrief%></div></td>
+				<td class="hed"><div align="right">
+		<%
+			
+		if(kmcountall!=0)
+		{
+			aa=Double.valueOf(racountall);
+			aa=(aa/kmcountall);
+			aa=aa*100;
+
+			rr=Double.valueOf(rdcountall);
+			rr=(rr/kmcountall);
+			rr=rr*100;
+			
+			ss=Double.valueOf(oscountall/10);
+			ss=ss/kmcountall;
+			ss=ss*100;
+			
+			rt=aa+rr+ss;;
+		out.print(nf.format(rt));
+		}
+		else
+		{
+			out.print("NA");
+		}
+		%></div></td>
+		</tr>
+		</table>
+		<% 
+		}
+		else
+		{
+			%>
+			<table border="1" width="100%" class="stats">
+			<tr>
+			<td align="center"><b>Sr.</b></td>
+			
+			<td  align="center"><b>TripID</b></td>
+			<td  align="center"><b>TripStartDate</b></td>
+			<td  align="center"><b>TripEndDate</b></td>
+			<td  align="center"><b>TripFrom</b></td>
+			<td  align="center"><b>TripTo</b></td>
+			<td  align="center"><b>Vehicle</b></td>
+			<td  align="center"><b>Distance</b></td>
+			<td  align="center"><b>StdDistance</b></td>
+			<td  align="center"><b>StdTransitTime</b></td>
+			<td align="center"><b>OS Duration<br>(in Sec)</b></td>
+			<td align="center"><b>RA Count</b></td>
+			<td  align="center"><b>RD Count</b></td>
+			<td align="center"><b>OS Count</b></td>
+			<td  align="center"><b>Rating</b></td>
+			<td  align="center"><b>CD</b></td>
+			<td  align="center"><b>ND</b></td>
+			<td align="center"><b>Basic</b></td>
+			<td align="center"><b>Module1</b></td>
+			<td  align="center"><b>Module2</b></td>
+			<td align="center"><b>Module3</b></td>
+			<td  align="center"><b>Module4</b></td>
+			<td  align="center"><b>Briefing</b></td>
+			<td  align="center"><b>BriefingTrainer</b></td>
+			<td  align="center"><b>BriefingComments</b></td>
+			<td  align="center"><b>Debriefing</b></td>
+			<td  align="center"><b>DebriefingTrainer</b></td>
+			<td  align="center"><b>DebriefingComments</b></td>
+			<td  align="center"><b>Category</b></td>
+						
+			</tr>
+	<%
+			int i1=1;
+			String tripid,vehregno,tripfrom,tripstartdate,tripto,tripendate,crcount,ndcounte,drivercode;
+			String basic="",module1="",module2="",module3="",module4="",category="";
+			String briefdone="",brieftrainername="",briefcomment="",debriefdone="",debrieftrainername="",debriefcomment="";
+			double stdkm=0.00, ttime=0.00,ratinge=0.00;
+			int distance,racounte,rdcounte,osduratione,oscounte;
+			String triplist;
+		
+			String sss="Select distinct(tripid) from t_completedjourney where gpname='Castrol' and EndDate >= '"+fromdate+"' AND EndDate <= '"+todate+"'";
+			ResultSet rs=sten.executeQuery(sss);
+			while(rs.next())
+			{
+				tripid=rs.getString("TripID");
+				
+				String ss1="Select DriverID,VehRegNo,StartPlace,StartDate,EndPlace,EndDate,KmTravelled,RACount,RDCount,OSDuration,OSCount,CRCount,NDCount from t_completedjourney where tripid ='"+rs.getString("tripid")+"' limit 1";
+				ResultSet rs1=sten1.executeQuery(ss1);
+				if(rs1.next())
+				{
+					drivercode=rs1.getString("DriverID");
+				    vehregno=rs1.getString("VehRegNo");
+					tripfrom=rs1.getString("StartPlace");
+					tripstartdate=rs1.getString("StartDate");
+					tripto=rs1.getString("EndPlace");
+					tripendate=rs1.getString("EndDate");
+					distance=rs1.getInt("KmTravelled");
+					racounte=rs1.getInt("RACount");
+					rdcounte=rs1.getInt("RDCount");
+					osduratione=rs1.getInt("OSDuration");
+					oscounte=rs1.getInt("OSCount");
+					crcount=rs1.getString("CRCount");
+					ndcounte=rs1.getString("NDCount");
+					
+					String ss2="SELECT Basic, Module1, Module2, Module3, Module4 FROM t_drivertraining WHERE dcode = '"+drivercode+"'";
+					ResultSet rs2=sten2.executeQuery(ss2);
+					if(rs2.next())
+					{
+						basic=rs2.getString("Basic");
+						module1=rs2.getString("Module1");
+						module2=rs2.getString("Module2");
+						module3=rs2.getString("Module3");
+						module4=rs2.getString("Module4");
+						
+					}
+					
+					String ss3="SELECT brifstatus,TrainerName,remarkcom FROM t_briefing WHERE tripid='"+tripid+"'";
+					ResultSet rs3=sten2.executeQuery(ss3);
+					
+					if(rs3.next())
+						
+					{//System.out.println("Hiiiiiiiiiii"); 
+						briefdone=rs3.getString("brifstatus");
+						brieftrainername=rs3.getString("TrainerName");
+						briefcomment=rs3.getString("remarkcom");
+					}
+					
+					String ss4="SELECT Trainername,remarkcom FROM t_debriefing WHERE tripid='"+tripid+"'";
+					ResultSet rs4=sten2.executeQuery(ss4);
+					
+					if(rs4.next())
+					{
+						//debriefdone="Yes";
+						debrieftrainername=rs4.getString("TrainerName");
+						debriefcomment=rs4.getString("remarkcom");
+					}
+					
+					String ss5="select Km,TTime from t_castrolroutes where StartPlace='"+tripfrom+"' and EndPlace='"+tripto+"'";
+					ResultSet rs5=sten2.executeQuery(ss5);
+					
+					if(rs5.next())
+					{
+						stdkm=rs5.getDouble("Km");
+						ttime=rs5.getDouble("TTime");
+					}
+					
+					String ss6="select Category from t_alljddata where TripId='"+tripid+"'";
+					ResultSet rs6=sten2.executeQuery(ss6);
+					
+					if(rs6.next())
+					{
+						category=rs6.getString("Category");
+					}
+					
+					
+					%>	
+					<tr>
+					<td><%=i%></td>
+					<td><div align="left"><%=tripid%></div></td>
+					<td><div align="left"><%=tripstartdate%></div></td>
+					<td><div align="left"><%=tripendate%></div></td>
+					<td><div align="left"><%=tripfrom%></div></td>
+					<td><div align="left"><%=tripto%></div></td>
+					<td><div align="left"><%=vehregno%></div></td>
+					<td><div align="left"><%=distance%></div></td>
+					<td><div align="left"><%=stdkm%></div></td>
+					<td><div align="left"><%=ttime%></div></td>
+					<td><div align="left"><%=osduratione%></div></td>
+					<td><div align="left"><%=racounte%></div></td>
+					<td><div align="left"><%=rdcounte%></div></td>
+					<td><div align="left"><%=oscounte%></div></td>
+					<td><div align="left">
+					
+					<%
+					ratinge=((Double.valueOf(racount))/(Double.valueOf(distance))*100)+((Double.valueOf(rdcount))/(Double.valueOf(distance))*100)+((Double.valueOf(osduration))/10/(Double.valueOf(distance))*100);
+
+					if(distance==0)
+					{
+						out.print("NA");
+					}
+					else
+					{
+						out.print(nf.format(ratinge));
+					}
+					%>
+					</div></td>
+			
+			<td><div align="left"><%=crcount%></div></td>
+			<td><div align="left"><%=ndcounte%></div></td>
+			<td><div align="left"><%=basic%></div></td>
+			<td><div align="left"><%=module1%></div></td>
+			<td><div align="left"><%=module2%></div></td>
+			<td><div align="left"><%=module3%></div></td>
+			<td><div align="left"><%=module4%></div></td>
+			<%
+			
+			if(briefdone.equalsIgnoreCase("briefed"))
+			{
+				%>
+				<td><div align="left"><%="Yes"%></div></td>
+				<%
+			}
+			else
+			{
+			%>
+			<td><div align="left"><%="No"%></div></td>
+			<%
+			}
+			%>
+			<td><div align="left"><%=brieftrainername%></div></td>
+			<td><div align="left"><%=briefcomment%></div></td>
+			<%
+			if(debriefdone.equalsIgnoreCase("debrifed"))
+			{
+			%>
+			<td><div align="left"><%="Yes"%></div></td>
+				<%
+			}
+			else
+			{
+			%>
+			<td><div align="left"><%="No"%></div></td>
+			<%
+			}
+			%>
+			<td><div align="left"><%=debrieftrainername%></div></td>
+			<td><div align="left"><%=debriefcomment%></div></td>
+			<td><div align="left"><%=category%></div></td>
+			</tr>
+		<%
+		   
+				}//end of while loop
+			i++;
+			}
+		%>
+		</table>
+		<%
+					
+		}
+			
+	
+}
+
+///************************************************STARTED**********************************************************************************************	
+	else if(thename.equalsIgnoreCase("started"))
+	{
+			// In stared loop all data is come from t_ complited journey..
+
+			if(sortby.equalsIgnoreCase("location" ))
+			{
+		
+			
+		%>
+			<table border="1" width="100%" class="stats">
+			<tr>
+			<td  class="hed" rowspan="2"> Sr.</td>
+			<td  class="hed" rowspan="2"> Origin</td>
+			<td  class="hed" rowspan="2"> Trips</td>
+			<td  class="hed" rowspan="2"> Drivers</td>
+			<td  class="hed" rowspan="2"> Vehicles</td>
+			<td  class="hed" rowspan="2"> Km. Travelled</td>
+			<td  class="hed" colspan="3"> Process Violations</td>
+			<td  class="hed" colspan="2"> Policy Violations</td>
+			<td  class="hed" rowspan="2"> Briefed Trips</td>
+			<td  class="hed" rowspan="2"> De-Briefed Trips</td>
+			<td  class="hed" rowspan="2"> Rating</td>
+			</tr>		
+			<tr>
+			<td  class="hed"> OS Duration<br>(Sec)</br></td>
+			<td  class="hed"> RA</td>
+			<td  class="hed"> RD</td>
+			<td  class="hed"> CD</td>
+			<td  class="hed"> ND</td>
+			</tr>
+			<%
+			int k=1;			
+			kmcountall=0;tripcountall=0;drivercountall=0;ratingcountall=0.0;vehcountall=0;oscountall=0;racountall=0;
+			rdcountall=0;cdcountall=0;ndcountall=0;	countlatency=0;	durationall=0;int j=0;kmcount=0;tripcount=0;
+			totpbrief=0;totpdebrief=0;
+			sqll="select Distinct(StartCode) from t_startedjourney where StartDate>= '"+fromdate+"' and StartDate <='"+todate+"' and GPName='Castrol' order by OwnerName Asc";
+			//System.out.println(sqll);
+			ResultSet rstt=stt.executeQuery(sqll);
+			while(rstt.next())
+			{
+				drivercount=0;
+				ratingcount=0.0;
+				vehcount=0;
+				oscount=0;
+				racount=0;
+				rdcount=0;
+				cdcount=0;
+				ndcount=0;
+				latency=0;
+				duration=0;startplace="-";StartCode="-";
+				pbrief=0;pdebrief=0;
+				startplace=rstt.getString("StartCode");
+				sqlplace="select StartPlace from t_completedjourney where StartCode='"+startplace+"' limit 1";
+				//System.out.println(sqll);
+				ResultSet rstplace=stplace.executeQuery(sqlplace);
+				while(rstplace.next())
+				{
+				StartCode=rstplace.getString("StartPlace");
+				}
+			sql8 ="select count(Distinct(TripID)) as TripID,count(distinct(DriverCode)) as Driver,count(distinct(Vehid)) as Vehid from  t_startedjourney where StartDate>= '"+fromdate+"' and StartDate <='"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"'" ;
+			ResultSet rs8 = st8.executeQuery(sql8);
+			while(rs8.next())
+			{
+				drivercount=rs8.getInt("Driver");
+				drivercountall=drivercountall+drivercount;
+				tripcount=rs8.getInt("TripID");
+				tripcountall=tripcountall+tripcount;
+				vehcount=rs8.getInt("Vehid");
+				vehcountall=vehcountall+vehcount;
+			}	
+				
+				sqlll="select Distinct(TripID) from t_startedjourney where GPName='Castrol' and StartDate between '"+fromdate+"' and '"+todate+"' and StartCode='"+startplace+"'";
+				ResultSet rsttt=sttt.executeQuery(sqlll);
+				while(rsttt.next())
+				{
+					oscount=0;
+					racount=0;
+					rdcount=0;
+					cdcount=0;
+					ndcount=0;
+					latency=0;
+					kmcount=0;
+					duration=0;
+					sql4="select KmTravelled,RACount,RDCount,OSDuration,CRCount,NDCount from  t_completedjourney where TripID='"+rsttt.getString("TripID")+"' limit 1";
+					ResultSet rstkm=st4.executeQuery(sql4);
+					while(rstkm.next())
+					{
+						kmcount+=rstkm.getInt("KmTravelled");
+						kmcountall=kmcountall+kmcount;
+						oscount+=rstkm.getInt("OSDuration");
+						oscountall=oscountall+oscount;
+						racount+=rstkm.getInt("RACount");
+						racountall=racountall+racount;
+						rdcount+=rstkm.getInt("RDCount");
+						rdcountall=rdcountall+rdcount;
+						duration+=rstkm.getInt("OSDuration");
+						durationall+=durationall+duration;
+						if(rstkm.getString("CRCount").equals("Yes"))
+						{
+							cdcount++;
+						}
+						if(rstkm.getString("NDCount").equals("Yes"))
+						{
+							ndcount++;
+						}
+					}
+				
+										
+				}
+				sqlbrief="SELECT count(Distinct(`tripid`)) as count FROM `t_briefing` WHERE tripid in (select Distinct(TripID) from  t_startedjourney where StartDate>= '"+fromdate+"' and StartDate <='"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"')";
+				ResultSet rstbrief=stbrief.executeQuery(sqlbrief);
+				while(rstbrief.next())
+				{
+					pbrief=rstbrief.getInt("count");
+					totpbrief=totpbrief+pbrief;
+				}
+				sqldebrief="SELECT count(Distinct(`tripid`)) as count FROM `t_debriefing` WHERE tripid in (select Distinct(TripID) from  t_startedjourney where StartDate>= '"+fromdate+"' and StartDate <='"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"')";
+				ResultSet rstdebrief=stdebrief.executeQuery(sqldebrief);
+				while(rstdebrief.next())
+				{
+					pdebrief=rstdebrief.getInt("count");
+					totpdebrief=totpdebrief+pdebrief;
+				}
+				
+			%>	
+			<tr>
+			<td><%=k%></td>
+			<td><div align="left"><a href="#" onclick="javascript:window.open('LocationwiseTrips.jsp?startplace=<%=StartCode.replace("&","and")%>&date1=<%=fromdate %>&date2=<%=todate %>&triptype=<%=thename%>');"><%=StartCode%></a>
+			</div></td>
+			
+			<td>
+			<div align="right">
+			<%
+				out.print(tripcount);
+			%>	
+			</div></td>
+			<td>
+			<div align="right">
+			<%
+				out.print(drivercount);
+			%>
+			</div></td>
+			<td>
+			<div align="right">
+			<%
+				out.print(vehcount);
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+				out.print(kmcount);
+			%>
+			</div>	
+			</td>
+			<td><div align="right">
+			<%
+				out.print(oscount);
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+				out.print(racount);
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+				out.print(rdcount);
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+			
+				if(cdcount >0)
+				{
+				cdcountall++;
+				out.print("Yes");
+				}
+				else
+				{
+				out.print("No");
+				}
+			
+			
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+			if(ndcount >0)
+				{
+				ndcountall++;
+				out.print("Yes");
+				}
+				else
+				{
+				out.print("No");
+				}
+				
+			%>
+			</div></td>
+			<td><%=pbrief%></td>
+			<td><%=pdebrief%></td>
+			<td>
+			<div align="right">
+			<%
+				Accelaration1=0;
+				Decelaration1=0;
+				OverSpeed1=0;
+			if(racount > 0 && kmcount > 0)
+			{
+				Accelaration1=((double)racount/(double)kmcount)*100;
+			}
+			if(rdcount > 0 && kmcount > 0)
+			{
+				Decelaration1=((double)rdcount/(double)kmcount)*100;
+			}
+			if(duration > 0 && kmcount> 0)
+			{
+				OverSpeed1 =(((double)duration/10)/(double)kmcount)*100;
+			}
+			ratingcount=Accelaration1+Decelaration1+OverSpeed1;
+			ratingcountall=ratingcountall+ratingcount;
+			
+			if(kmcount > 0)
+			{
+			out.print(nf.format(ratingcount));	
+			}
+			else
+			{
+				out.print("NA");
+			}
+			%>
+			</div></td>
+			</tr>			
+			<%
+			k++;
+			
+			}
+			%>	
+			<tr>
+			<td class="hed" colspan="2">Total :-</td>
+			<td class="hed"><div align="right"><%=tripcountall%></div></td>
+			<td class="hed"><div align="right"><%=drivercountall%></div></td>
+			<td class="hed"><div align="right"><%=vehcountall%></div></td>
+			<td class="hed"><div align="right"><%=kmcountall%></div></td>
+			<td class="hed"><div align="right"><%=oscountall%></div></td>
+			<td class="hed"><div align="right"><%=racountall%></div></td>
+			<td class="hed"><div align="right"><%=rdcountall%></div></td>
+			<td class="hed"><div align="right"><%=cdcountall%></div></td>
+			<%
+				if(ndcountall > 0)
+				{
+					%>
+					<td class="hed"><div align="right">Yes</div></td>
+					<%
+				}
+				else
+				{
+					%>
+					<td class="hed"><div align="right">No</div></td>
+					<%
+				}
+			%>
+				<td class="hed"><div align="right"><%=totpbrief%></div></td>
+				<td class="hed"><div align="right"><%=totpdebrief%></div></td>
+					
+					<td class="hed"><div align="right">
+			<%
+			
+			if(kmcountall!=0)
+			{
+				aa=Double.valueOf(racountall);
+				aa=(aa/kmcountall);
+				aa=aa*100;
+
+				rr=Double.valueOf(rdcountall);
+				rr=(rr/kmcountall);
+				rr=rr*100;
+				
+				ss=Double.valueOf(oscountall/10);
+				ss=ss/kmcountall;
+				ss=ss*100;
+				
+				rt=aa+rr+ss;;
+			out.print(nf.format(rt));
+			}
+			else
+			{
+				out.print("NA");
+			}
+			%></div></td>
+			</tr>
+			</table>
+			<% 
+			}
+
+			else if(sortby.equalsIgnoreCase("trans" ))
+			{  
+				///*********************** **************TRANSPORTER *****
+			%>
+			<table border="1" width="100%" class="stats">
+			<tr>
+			<td  class="hed" rowspan="2"> Sr.</td>
+			<td  class="hed" rowspan="2"> Transporter</td>
+			<td  class="hed" rowspan="2"> Trips</td>
+			<td  class="hed" rowspan="2"> Drivers</td>
+			<td  class="hed" rowspan="2"> Vehicles</td>
+			<td  class="hed" rowspan="2"> Km. Travelled</td>
+			<td  class="hed" colspan="3"> Process Violations</td>
+			<td  class="hed" colspan="2"> Policy Violations</td>
+			<td  class="hed" rowspan="2"> Briefed Trips</td>
+			<td  class="hed" rowspan="2"> De-Briefed Trips</td>
+			<td  class="hed" rowspan="2"> Rating</td>
+			</tr>		
+			<tr>
+			<td  class="hed"> OS Duration<br>(Sec)</br></td>
+			<td  class="hed"> RA</td>
+			<td  class="hed"> RD</td>
+			<td  class="hed"> CD</td>
+			<td  class="hed"> ND</td>
+			</tr>
+			<%
+			int k=1;			
+			kmcountall=0;tripcountall=0;drivercountall=0;ratingcountall=0.0;vehcountall=0;oscountall=0;racountall=0;
+			rdcountall=0;cdcountall=0;ndcountall=0;	countlatency=0;	durationall=0;int j=0;kmcount=0;tripcount=0;
+			totpbrief=0;totpdebrief=0;
+			sqll="select Distinct(OwnerName) from t_startedjourney where StartDate>= '"+fromdate+"' and StartDate <='"+todate+"' and GPName='Castrol' order by OwnerName Asc";
+		//	System.out.println(sqll);
+			ResultSet rstt=stt.executeQuery(sqll);
+			while(rstt.next())
+			{
+				drivercount=0;
+				ratingcount=0.0;
+				vehcount=0;
+				oscount=0;
+				racount=0;
+				rdcount=0;
+				cdcount=0;
+				ndcount=0;
+				latency=0;
+				duration=0;startplace="-";StartCode="-";
+				pbrief=0;
+				pdebrief=0;
+				startplace=rstt.getString("OwnerName");
+				
+			sql8 ="select count(Distinct(TripID)) as TripID,count(distinct(DriverCode)) as Driver,count(distinct(Vehid)) as Vehid from  t_startedjourney where StartDate>= '"+fromdate+"' and StartDate <='"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"'" ;
+			ResultSet rs8 = st8.executeQuery(sql8);
+			while(rs8.next())
+			{
+				drivercount=rs8.getInt("Driver");
+				drivercountall=drivercountall+drivercount;
+				tripcount=rs8.getInt("TripID");
+				tripcountall=tripcountall+tripcount;
+				vehcount=rs8.getInt("Vehid");
+				vehcountall=vehcountall+vehcount;
+			}	
+				
+				sqlll="select Distinct(TripID) from t_startedjourney where GPName='Castrol' and StartDate between '"+fromdate+"' and '"+todate+"' and OwnerName='"+startplace+"'";
+				ResultSet rsttt=sttt.executeQuery(sqlll);
+				while(rsttt.next())
+				{
+					oscount=0;
+					racount=0;
+					rdcount=0;
+					cdcount=0;
+					ndcount=0;
+					latency=0;
+					kmcount=0;
+					duration=0;
+					sql4="select KmTravelled,RACount,RDCount,OSDuration,CRCount,NDCount from  t_completedjourney where TripID='"+rsttt.getString("TripID")+"' limit 1";
+					ResultSet rstkm=st4.executeQuery(sql4);
+					while(rstkm.next())
+					{
+						kmcount+=rstkm.getInt("KmTravelled");
+						kmcountall=kmcountall+kmcount;
+						oscount+=rstkm.getInt("OSDuration");
+						oscountall=oscountall+oscount;
+						racount+=rstkm.getInt("RACount");
+						racountall=racountall+racount;
+						rdcount+=rstkm.getInt("RDCount");
+						rdcountall=rdcountall+rdcount;
+						duration+=rstkm.getInt("OSDuration");
+						durationall+=durationall+duration;
+						if(rstkm.getString("CRCount").equals("Yes"))
+						{
+							cdcount++;
+						}
+						if(rstkm.getString("NDCount").equals("Yes"))
+						{
+							ndcount++;
+						}
+					}
+				}
+				sqlbrief="SELECT count(Distinct(`tripid`)) as count FROM `t_briefing` WHERE tripid in (select Distinct(TripID) from  t_startedjourney where StartDate>= '"+fromdate+"' and StartDate <='"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"')";
+				ResultSet rstbrief=stbrief.executeQuery(sqlbrief);
+				while(rstbrief.next())
+				{
+					pbrief=rstbrief.getInt("count");
+					totpbrief=totpbrief+pbrief;
+				}
+				sqldebrief="SELECT count(Distinct(`tripid`)) as count FROM `t_debriefing` WHERE tripid in (select Distinct(TripID) from  t_startedjourney where StartDate>= '"+fromdate+"' and StartDate <='"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"')";
+				ResultSet rstdebrief=stdebrief.executeQuery(sqldebrief);
+				while(rstdebrief.next())
+				{
+					pdebrief=rstdebrief.getInt("count");
+					totpdebrief=totpdebrief+pdebrief;
+				}	
+			
+			%>	
+			<tr>
+			<td><%=k%></td>
+			<td><div align="left"><a href="castrol_driver_transporter.jsp?transporter=<%=startplace%>&data1=<%=fromdate%>&data2=<%=todate%>&triptype=<%=thename%>"><b><%=startplace%></b></a>
+			</div></td>
+			
+			<td>
+			<div align="right">
+			<%
+				out.print(tripcount);
+			%>	
+			</div></td>
+			<td>
+			<div align="right">
+			<%
+				out.print(drivercount);
+			%>
+			</div></td>
+			<td>
+			<div align="right">
+			<%
+				out.print(vehcount);
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+				out.print(kmcount);
+			%>
+			</div>	
+			</td>
+			<td><div align="right">
+			<%
+				out.print(oscount);
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+				out.print(racount);
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+				out.print(rdcount);
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+		
+				if(cdcount >0)
+				{
+				cdcountall++;
+				out.print("Yes");
+				}
+				else
+				{
+				out.print("No");
+				}
+			%>
+			</div></td>
+			<td><div align="right">
+			<%
+				if(ndcount >0)
+				{
+				ndcountall++;
+				out.print("Yes");
+				}
+				else
+				{
+				out.print("No");
+				}
+					
+			%>
+			</div></td>
+			<td><%=pbrief%></td>
+			<td><%=pdebrief%></td>
+			<td>
+			<div align="right">
+			<%
+				Accelaration1=0;
+				Decelaration1=0;
+				OverSpeed1=0;
+			if(racount > 0 && kmcount > 0)
+			{
+				Accelaration1=((double)racount/(double)kmcount)*100;
+			}
+			if(rdcount > 0 && kmcount > 0)
+			{
+				Decelaration1=((double)rdcount/(double)kmcount)*100;
+			}
+			if(duration > 0 && kmcount> 0)
+			{
+				OverSpeed1 =(((double)duration/10)/(double)kmcount)*100;
+			}
+			ratingcount=Accelaration1+Decelaration1+OverSpeed1;
+			ratingcountall=ratingcountall+ratingcount;
+			
+			if(kmcount > 0)
+			{
+			out.print(nf.format(ratingcount));	
+			}
+			else
+			{
+				out.print("NA");
+			}
+			%>
+			</div></td>
+			</tr>			
+			<%
+			k++;
+			}
+			%>	
+			<tr>
+			<td class="hed" colspan="2">Total :-</td>
+			<td class="hed"><div align="right"><%=tripcountall%></div></td>
+			<td class="hed"><div align="right"><%=drivercountall%></div></td>
+			<td class="hed"><div align="right"><%=vehcountall%></div></td>
+			<td class="hed"><div align="right"><%=kmcountall%></div></td>
+			<td class="hed"><div align="right"><%=oscountall%></div></td>
+			<td class="hed"><div align="right"><%=racountall%></div></td>
+			<td class="hed"><div align="right"><%=rdcountall%></div></td>
+			<td class="hed"><div align="right"><%=cdcountall%></div></td>
+			<%
+				if(ndcountall > 0)
+				{
+					%>
+					<td class="hed"><div align="right">Yes</div></td>
+					<%
+				}
+				else
+				{
+					%>
+					<td class="hed"><div align="right">No</div></td>
+					<%
+				}
+			%>
+					<td class="hed"><div align="right"><%=totpbrief%></div></td>
+					<td class="hed"><div align="right"><%=totpdebrief%></div></td>
+					<td class="hed"><div align="right">
+			<%
+				
+			if(kmcountall!=0)
+			{
+				aa=Double.valueOf(racountall);
+				aa=(aa/kmcountall);
+				aa=aa*100;
+
+				rr=Double.valueOf(rdcountall);
+				rr=(rr/kmcountall);
+				rr=rr*100;
+				
+				ss=Double.valueOf(oscountall/10);
+				ss=ss/kmcountall;
+				ss=ss*100;
+				
+				rt=aa+rr+ss;;
+			out.print(nf.format(rt));
+			}
+			else
+			{
+				out.print("NA");
+			}
+			%></div></td>
+			</tr>
+			</table>
+			<% 
+			}//end of started if
+		//***************************************started all trips**************************************************
+			else
+			{
+
+				%>
+				<table border="1" width="100%" class="stats">
+				<tr>
+				<td align="center"><b>Sr.</b></td>
+				
+				<td  align="center"><b>TripID</b></td>
+				<td  align="center"><b>TripStartDate</b></td>
+				<td  align="center"><b>TripEndDate</b></td>
+				<td  align="center"><b>TripFrom</b></td>
+				<td  align="center"><b>TripTo</b></td>
+				<td  align="center"><b>Vehicle</b></td>
+				<td  align="center"><b>Distance</b></td>
+				<td  align="center"><b>StdDistance</b></td>
+				<td  align="center"><b>StdTransitTime</b></td>
+				<td align="center"><b>OS Duration<br>(in Sec)</b></td>
+				<td align="center"><b>RA Count</b></td>
+				<td  align="center"><b>RD Count</b></td>
+				<td align="center"><b>OS Count</b></td>
+				<td  align="center"><b>Rating</b></td>
+				<td  align="center"><b>CD</b></td>
+				<td  align="center"><b>ND</b></td>
+				<td align="center"><b>Basic</b></td>
+				<td align="center"><b>Module1</b></td>
+				<td  align="center"><b>Module2</b></td>
+				<td align="center"><b>Module3</b></td>
+				<td  align="center"><b>Module4</b></td>
+				<td  align="center"><b>Briefing</b></td>
+				<td  align="center"><b>BriefingTrainer</b></td>
+				<td  align="center"><b>BriefingComments</b></td>
+				<td  align="center"><b>Debriefing</b></td>
+				<td  align="center"><b>DebriefingTrainer</b></td>
+				<td  align="center"><b>DebriefingComments</b></td>
+				<td  align="center"><b>Category</b></td>
+							
+				</tr>
+		<%
+				int i1=1;
+				String tripid,vehregno,tripfrom,tripstartdate,tripto,tripendate,crcount,ndcounte,drivercode;
+				String basic="",module1="",module2="",module3="",module4="",category="";
+				String briefdone="",brieftrainername="",briefcomment="",debriefdone="",debrieftrainername="",debriefcomment="";
+				double stdkm=0.00, ttime=0.00,ratinge=0.00;
+				int distance,racounte,rdcounte,osduratione,oscounte;
+				String triplist;
+			
+				String sss="Select distinct(tripid) from t_startedjourney where gpname='Castrol' and StartDate >= '"+fromdate+"' AND StartDate <= '"+todate+"'";
+				ResultSet rs=sten.executeQuery(sss);
+				while(rs.next())
+				{
+					tripid=rs.getString("TripID");
+					
+					String ss1="Select DriverID,VehRegNo,StartPlace,StartDate,EndPlace,EndDate,KmTravelled,RACount,RDCount,OSDuration,OSCount,CRCount,NDCount from t_completedjourney where tripid ='"+rs.getString("tripid")+"' limit 1";
+					ResultSet rs1=sten1.executeQuery(ss1);
+					if(rs1.next())
+					{
+						drivercode=rs1.getString("DriverID");
+					    vehregno=rs1.getString("VehRegNo");
+						tripfrom=rs1.getString("StartPlace");
+						tripstartdate=rs1.getString("StartDate");
+						tripto=rs1.getString("EndPlace");
+						tripendate=rs1.getString("EndDate");
+						distance=rs1.getInt("KmTravelled");
+						racounte=rs1.getInt("RACount");
+						rdcounte=rs1.getInt("RDCount");
+						osduratione=rs1.getInt("OSDuration");
+						oscounte=rs1.getInt("OSCount");
+						crcount=rs1.getString("CRCount");
+						ndcounte=rs1.getString("NDCount");
+						
+						String ss2="SELECT Basic, Module1, Module2, Module3, Module4 FROM t_drivertraining WHERE dcode = '"+drivercode+"'";
+						ResultSet rs2=sten2.executeQuery(ss2);
+						if(rs2.next())
+						{
+							basic=rs2.getString("Basic");
+							module1=rs2.getString("Module1");
+							module2=rs2.getString("Module2");
+							module3=rs2.getString("Module3");
+							module4=rs2.getString("Module4");
+							
+						}
+						
+						String ss3="SELECT brifstatus,TrainerName,remarkcom FROM t_briefing WHERE tripid='"+tripid+"'";
+						ResultSet rs3=sten2.executeQuery(ss3);
+						
+						if(rs3.next())
+							
+						{//System.out.println("Hiiiiiiiiiii"); 
+							briefdone=rs3.getString("brifstatus");
+							brieftrainername=rs3.getString("TrainerName");
+							briefcomment=rs3.getString("remarkcom");
+						}
+						
+						String ss4="SELECT Trainername,remarkcom FROM t_debriefing WHERE tripid='"+tripid+"'";
+						ResultSet rs4=sten2.executeQuery(ss4);
+						
+						if(rs4.next())
+						{
+							//debriefdone="Yes";
+							debrieftrainername=rs4.getString("TrainerName");
+							debriefcomment=rs4.getString("remarkcom");
+						}
+						
+						String ss5="select Km,TTime from t_castrolroutes where StartPlace='"+tripfrom+"' and EndPlace='"+tripto+"'";
+						ResultSet rs5=sten2.executeQuery(ss5);
+						
+						if(rs5.next())
+						{
+							stdkm=rs5.getDouble("Km");
+							ttime=rs5.getDouble("TTime");
+						}
+						
+						String ss6="select Category from t_alljddata where TripId='"+tripid+"'";
+						ResultSet rs6=sten2.executeQuery(ss6);
+						
+						if(rs6.next())
+						{
+							category=rs6.getString("Category");
+						}
+						
+						
+						%>	
+						<tr>
+						<td><%=i%></td>
+						<td><div align="left"><%=tripid%></div></td>
+						<td><div align="left"><%=tripstartdate%></div></td>
+						<td><div align="left"><%=tripendate%></div></td>
+						<td><div align="left"><%=tripfrom%></div></td>
+						<td><div align="left"><%=tripto%></div></td>
+						<td><div align="left"><%=vehregno%></div></td>
+						<td><div align="left"><%=distance%></div></td>
+						<td><div align="left"><%=stdkm%></div></td>
+						<td><div align="left"><%=ttime%></div></td>
+						<td><div align="left"><%=osduratione%></div></td>
+						<td><div align="left"><%=racounte%></div></td>
+						<td><div align="left"><%=rdcounte%></div></td>
+						<td><div align="left"><%=oscounte%></div></td>
+						<td><div align="left">
+						
+						<%
+						ratinge=((Double.valueOf(racount))/(Double.valueOf(distance))*100)+((Double.valueOf(rdcount))/(Double.valueOf(distance))*100)+((Double.valueOf(osduration))/10/(Double.valueOf(distance))*100);
+
+						if(distance==0)
+						{
+							out.print("NA");
+						}
+						else
+						{
+							out.print(nf.format(ratinge));
+						}
+						%>
+						</div></td>
+				
+				<td><div align="left"><%=crcount%></div></td>
+				<td><div align="left"><%=ndcounte%></div></td>
+				<td><div align="left"><%=basic%></div></td>
+				<td><div align="left"><%=module1%></div></td>
+				<td><div align="left"><%=module2%></div></td>
+				<td><div align="left"><%=module3%></div></td>
+				<td><div align="left"><%=module4%></div></td>
+				<%
+				
+				if(briefdone.equalsIgnoreCase("briefed"))
+				{
+					%>
+					<td><div align="left"><%="Yes"%></div></td>
+					<%
+				}
+				else
+				{
+				%>
+				<td><div align="left"><%="No"%></div></td>
+				<%
+				}
+				%>
+				<td><div align="left"><%=brieftrainername%></div></td>
+				<td><div align="left"><%=briefcomment%></div></td>
+				<%
+				if(debriefdone.equalsIgnoreCase("debrifed"))
+				{
+				%>
+				<td><div align="left"><%="Yes"%></div></td>
+					<%
+				}
+				else
+				{
+				%>
+				<td><div align="left"><%="No"%></div></td>
+				<%
+				}
+				%>
+				<td><div align="left"><%=debrieftrainername%></div></td>
+				<td><div align="left"><%=debriefcomment%></div></td>
+				<td><div align="left"><%=category%></div></td>
+				</tr>
+			<%
+			   
+					}//end of while loop
+				i1++;
+				}
+			%>
+			</table>
+			<%
+						
+			
+			}
+		
+	}//end of else if started
+	else if(thename.equalsIgnoreCase("both"))
+	{
+		// In stared loop all data is come from t_ complited journey..
+
+		if(sortby.equalsIgnoreCase("location" ))
+		{
+	
+		
+	%>
+		<table border="1" width="100%" class="stats">
+		<tr>
+		<td  class="hed" rowspan="2"> Sr.</td>
+		<td  class="hed" rowspan="2"> Origin</td>
+		<td  class="hed" rowspan="2"> Trips</td>
+		<td  class="hed" rowspan="2"> Drivers</td>
+		<td  class="hed" rowspan="2"> Vehicles</td>
+		<td  class="hed" rowspan="2"> Km. Travelled</td>
+		<td  class="hed" colspan="3"> Process Violations</td>
+		<td  class="hed" colspan="2"> Policy Violations</td>
+		<td  class="hed" rowspan="2"> Briefed Trips</td>
+		<td  class="hed" rowspan="2"> De-Briefed Trips</td>
+		<td  class="hed" rowspan="2"> Rating</td>
+		</tr>		
+		<tr>
+		<td  class="hed"> OS Duration<br>(Sec)</br></td>
+		<td  class="hed"> RA</td>
+		<td  class="hed"> RD</td>
+		<td  class="hed"> CD</td>
+		<td  class="hed"> ND</td>
+		</tr>
+		<%
+		int k=1;			
+		kmcountall=0;tripcountall=0;drivercountall=0;ratingcountall=0.0;vehcountall=0;oscountall=0;racountall=0;
+		rdcountall=0;cdcountall=0;ndcountall=0;	countlatency=0;	durationall=0;int j=0;kmcount=0;tripcount=0;
+		totpbrief=0;totpdebrief=0;
+		sqll="select Distinct(StartCode) from t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' order by OwnerName Asc";
+		//System.out.println(sqll);
+		ResultSet rstt=stt.executeQuery(sqll);
+		while(rstt.next())
+		{
+			drivercount=0;
+			ratingcount=0.0;
+			vehcount=0;
+			oscount=0;
+			racount=0;
+			rdcount=0;
+			cdcount=0;
+			ndcount=0;
+			latency=0;
+			duration=0;startplace="-";StartCode="-";
+			pbrief=0;pdebrief=0;
+			startplace=rstt.getString("StartCode");
+			sqlplace="select StartPlace from t_completedjourney where StartCode='"+startplace+"' limit 1";
+			//System.out.println(sqll);
+			ResultSet rstplace=stplace.executeQuery(sqlplace);
+			while(rstplace.next())
+			{
+			StartCode=rstplace.getString("StartPlace");
+			}
+		sql8 ="select count(Distinct(TripID)) as TripID,count(distinct(DriverID)) as Driver,count(distinct(Vehid)) as Vehid from  t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"'" ;
+		ResultSet rs8 = st8.executeQuery(sql8);
+		while(rs8.next())
+		{
+			drivercount=rs8.getInt("Driver");
+			drivercountall=drivercountall+drivercount;
+			tripcount=rs8.getInt("TripID");
+			tripcountall=tripcountall+tripcount;
+			vehcount=rs8.getInt("Vehid");
+			vehcountall=vehcountall+vehcount;
+		}	
+			
+			sqlll="select Distinct(TripID) from t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"'";
+			ResultSet rsttt=sttt.executeQuery(sqlll);
+			while(rsttt.next())
+			{
+				oscount=0;
+				racount=0;
+				rdcount=0;
+				cdcount=0;
+				ndcount=0;
+				latency=0;
+				kmcount=0;
+				duration=0;
+				sql4="select KmTravelled,RACount,RDCount,OSDuration,CRCount,NDCount from  t_completedjourney where TripID='"+rsttt.getString("TripID")+"' limit 1";
+				ResultSet rstkm=st4.executeQuery(sql4);
+				while(rstkm.next())
+				{
+					kmcount+=rstkm.getInt("KmTravelled");
+					kmcountall=kmcountall+kmcount;
+					oscount+=rstkm.getInt("OSDuration");
+					oscountall=oscountall+oscount;
+					racount+=rstkm.getInt("RACount");
+					racountall=racountall+racount;
+					rdcount+=rstkm.getInt("RDCount");
+					rdcountall=rdcountall+rdcount;
+					duration+=rstkm.getInt("OSDuration");
+					durationall+=durationall+duration;
+					if(rstkm.getString("CRCount").equals("Yes"))
+					{
+						cdcount++;
+					}
+					if(rstkm.getString("NDCount").equals("Yes"))
+					{
+						ndcount++;
+					}
+				}
+			
+									
+			}
+			sqlbrief="SELECT count(Distinct(`tripid`)) as count FROM `t_briefing` WHERE tripid in (select Distinct(TripID) from t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"')";
+			ResultSet rstbrief=stbrief.executeQuery(sqlbrief);
+			while(rstbrief.next())
+			{
+				pbrief=rstbrief.getInt("count");
+				totpbrief=totpbrief+pbrief;
+			}
+			sqldebrief="SELECT count(Distinct(`tripid`)) as count FROM `t_debriefing` WHERE tripid in (select Distinct(TripID) from t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' and StartCode='"+startplace+"')";
+			ResultSet rstdebrief=stdebrief.executeQuery(sqldebrief);
+			while(rstdebrief.next())
+			{
+				pdebrief=rstdebrief.getInt("count");
+				totpdebrief=totpdebrief+pdebrief;
+			}
+			
+		%>	
+		<tr>
+		<td><%=k%></td>
+		<td><div align="left">
+		<a href="#" onclick="javascript:window.open('LocationwiseTrips.jsp?startplace=<%=StartCode.replace("&","and")%>&date1=<%=fromdate %>&date2=<%=todate %>&triptype=<%=thename%>');">
+		<%=StartCode%></a>
+		</div></td>
+		
+		<td>
+		<div align="right">
+		<%
+			out.print(tripcount);
+		%>	
+		</div></td>
+		<td>
+		<div align="right">
+		<%
+			out.print(drivercount);
+		%>
+		</div></td>
+		<td>
+		<div align="right">
+		<%
+			out.print(vehcount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(kmcount);
+		%>
+		</div>	
+		</td>
+		<td><div align="right">
+		<%
+			out.print(oscount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(racount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(rdcount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+		
+			if(cdcount >0)
+			{
+			cdcountall++;
+			out.print("Yes");
+			}
+			else
+			{
+			out.print("No");
+			}
+		
+		
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+		if(ndcount >0)
+			{
+			ndcountall++;
+			out.print("Yes");
+			}
+			else
+			{
+			out.print("No");
+			}
+			
+		%>
+		</div></td>
+		<td><%=pbrief%></td>
+		<td><%=pdebrief%></td>
+		<td>
+		<div align="right">
+		<%
+			Accelaration1=0;
+			Decelaration1=0;
+			OverSpeed1=0;
+		if(racount > 0 && kmcount > 0)
+		{
+			Accelaration1=((double)racount/(double)kmcount)*100;
+		}
+		if(rdcount > 0 && kmcount > 0)
+		{
+			Decelaration1=((double)rdcount/(double)kmcount)*100;
+		}
+		if(duration > 0 && kmcount> 0)
+		{
+			OverSpeed1 =(((double)duration/10)/(double)kmcount)*100;
+		}
+		ratingcount=Accelaration1+Decelaration1+OverSpeed1;
+		ratingcountall=ratingcountall+ratingcount;
+		
+		if(kmcount > 0)
+		{
+		out.print(nf.format(ratingcount));	
+		}
+		else
+		{
+			out.print("NA");
+		}
+		%>
+		</div></td>
+		</tr>			
+		<%
+		k++;
+		
+		}
+		%>	
+		<tr>
+		<td class="hed" colspan="2">Total :-</td>
+		<td class="hed"><div align="right"><%=tripcountall%></div></td>
+		<td class="hed"><div align="right"><%=drivercountall%></div></td>
+		<td class="hed"><div align="right"><%=vehcountall%></div></td>
+		<td class="hed"><div align="right"><%=kmcountall%></div></td>
+		<td class="hed"><div align="right"><%=oscountall%></div></td>
+		<td class="hed"><div align="right"><%=racountall%></div></td>
+		<td class="hed"><div align="right"><%=rdcountall%></div></td>
+		<td class="hed"><div align="right"><%=cdcountall%></div></td>
+		<%
+			if(ndcountall > 0)
+			{
+				%>
+				<td class="hed"><div align="right">Yes</div></td>
+				<%
+			}
+			else
+			{
+				%>
+				<td class="hed"><div align="right">No</div></td>
+				<%
+			}
+		%>
+			<td class="hed"><div align="right"><%=totpbrief%></div></td>
+			<td class="hed"><div align="right"><%=totpdebrief%></div></td>
+				
+				<td class="hed"><div align="right">
+		<%
+		
+		if(kmcountall!=0)
+		{
+			aa=Double.valueOf(racountall);
+			aa=(aa/kmcountall);
+			aa=aa*100;
+
+			rr=Double.valueOf(rdcountall);
+			rr=(rr/kmcountall);
+			rr=rr*100;
+			
+			ss=Double.valueOf(oscountall/10);
+			ss=ss/kmcountall;
+			ss=ss*100;
+			
+			rt=aa+rr+ss;;
+		out.print(nf.format(rt));
+		}
+		else
+		{
+			out.print("NA");
+		}
+		%></div></td>
+		</tr>
+		</table>
+		<% 
+		}
+
+		else if(sortby.equalsIgnoreCase("trans" ))
+		{  
+			///*********************** **************TRANSPORTER *****
+		%>
+		<table border="1" width="100%" class="stats">
+		<tr>
+		<td  class="hed" rowspan="2"> Sr.</td>
+		<td  class="hed" rowspan="2"> Transporter</td>
+		<td  class="hed" rowspan="2"> Trips</td>
+		<td  class="hed" rowspan="2"> Drivers</td>
+		<td  class="hed" rowspan="2"> Vehicles</td>
+		<td  class="hed" rowspan="2"> Km. Travelled</td>
+		<td  class="hed" colspan="3"> Process Violations</td>
+		<td  class="hed" colspan="2"> Policy Violations</td>
+		<td  class="hed" rowspan="2"> Briefed Trips</td>
+		<td  class="hed" rowspan="2"> De-Briefed Trips</td>
+		<td  class="hed" rowspan="2"> Rating</td>
+		</tr>		
+		<tr>
+		<td  class="hed"> OS Duration<br>(Sec)</br></td>
+		<td  class="hed"> RA</td>
+		<td  class="hed"> RD</td>
+		<td  class="hed"> CD</td>
+		<td  class="hed"> ND</td>
+		</tr>
+		<%
+		int k=1;			
+		kmcountall=0;tripcountall=0;drivercountall=0;ratingcountall=0.0;vehcountall=0;oscountall=0;racountall=0;
+		rdcountall=0;cdcountall=0;ndcountall=0;	countlatency=0;	durationall=0;int j=0;kmcount=0;tripcount=0;
+		totpbrief=0;totpdebrief=0;
+		sqll="select Distinct(OwnerName) from t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' order by OwnerName Asc";
+		//System.out.println(sqll);
+		ResultSet rstt=stt.executeQuery(sqll);
+		while(rstt.next())
+		{
+			drivercount=0;
+			ratingcount=0.0;
+			vehcount=0;
+			oscount=0;
+			racount=0;
+			rdcount=0;
+			cdcount=0;
+			ndcount=0;
+			latency=0;
+			duration=0;startplace="-";StartCode="-";
+			pbrief=0;
+			pdebrief=0;
+			startplace=rstt.getString("OwnerName");
+			
+		sql8 ="select count(Distinct(TripID)) as TripID,count(distinct(DriverID)) as Driver,count(distinct(Vehid)) as Vehid from  t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"'" ;
+		ResultSet rs8 = st8.executeQuery(sql8);
+		while(rs8.next())
+		{
+			drivercount=rs8.getInt("Driver");
+			drivercountall=drivercountall+drivercount;
+			tripcount=rs8.getInt("TripID");
+			tripcountall=tripcountall+tripcount;
+			vehcount=rs8.getInt("Vehid");
+			vehcountall=vehcountall+vehcount;
+		}	
+			
+			sqlll="select Distinct(TripID) from t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"'";
+			ResultSet rsttt=sttt.executeQuery(sqlll);
+			while(rsttt.next())
+			{
+				oscount=0;
+				racount=0;
+				rdcount=0;
+				cdcount=0;
+				ndcount=0;
+				latency=0;
+				kmcount=0;
+				duration=0;
+				
+				sql4="select KmTravelled,RACount,RDCount,OSDuration,CRCount,NDCount from t_completedjourney where TripID='"+rsttt.getString("TripID")+"' limit 1";
+				ResultSet rstkm=st4.executeQuery(sql4);
+				while(rstkm.next())
+				{
+					kmcount+=rstkm.getInt("KmTravelled");
+					kmcountall=kmcountall+kmcount;
+					oscount+=rstkm.getInt("OSDuration");
+					oscountall=oscountall+oscount;
+					racount+=rstkm.getInt("RACount");
+					racountall=racountall+racount;
+					rdcount+=rstkm.getInt("RDCount");
+					rdcountall=rdcountall+rdcount;
+					duration+=rstkm.getInt("OSDuration");
+					durationall+=durationall+duration;
+					if(rstkm.getString("CRCount").equals("Yes"))
+					{
+						cdcount++;
+					}
+					if(rstkm.getString("NDCount").equals("Yes"))
+					{
+						ndcount++;
+					}
+				}
+			}
+			sqlbrief="SELECT count(Distinct(`tripid`)) as count FROM `t_briefing` WHERE tripid in (select Distinct(TripID) from t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"')";
+			ResultSet rstbrief=stbrief.executeQuery(sqlbrief);
+			while(rstbrief.next())
+			{
+				pbrief=rstbrief.getInt("count");
+				totpbrief=totpbrief+pbrief;
+			}
+			sqldebrief="SELECT count(Distinct(`tripid`)) as count FROM `t_debriefing` WHERE tripid in (select Distinct(TripID) from t_completedjourney where StartDate >= '"+fromdate+"' and EndDate <= '"+todate+"' and GPName='Castrol' and OwnerName='"+startplace+"')";
+			ResultSet rstdebrief=stdebrief.executeQuery(sqldebrief);
+			while(rstdebrief.next())
+			{
+				pdebrief=rstdebrief.getInt("count");
+				totpdebrief=totpdebrief+pdebrief;
+			}	
+		
+		%>	
+		<tr>
+		<td><%=k%></td>
+		<td><div align="left"><a href="castrol_driver_transporter.jsp?transporter=<%=startplace%>&data1=<%=fromdate%>&data2=<%=todate%>&triptype=<%=thename%>"><b><%=startplace%></b></a>
+		</div></td>
+		
+		<td>
+		<div align="right">
+		<%
+			out.print(tripcount);
+		%>	
+		</div></td>
+		<td>
+		<div align="right">
+		<%
+			out.print(drivercount);
+		%>
+		</div></td>
+		<td>
+		<div align="right">
+		<%
+			out.print(vehcount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(kmcount);
+		%>
+		</div>	
+		</td>
+		<td><div align="right">
+		<%
+			out.print(oscount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(racount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			out.print(rdcount);
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+	
+			if(cdcount >0)
+			{
+			cdcountall++;
+			out.print("Yes");
+			}
+			else
+			{
+			out.print("No");
+			}
+		%>
+		</div></td>
+		<td><div align="right">
+		<%
+			if(ndcount >0)
+			{
+			ndcountall++;
+			out.print("Yes");
+			}
+			else
+			{
+			out.print("No");
+			}
+				
+		%>
+		</div></td>
+		<td><%=pbrief%></td>
+		<td><%=pdebrief%></td>
+		<td>
+		<div align="right">
+		<%
+			Accelaration1=0;
+			Decelaration1=0;
+			OverSpeed1=0;
+		if(racount > 0 && kmcount > 0)
+		{
+			Accelaration1=((double)racount/(double)kmcount)*100;
+		}
+		if(rdcount > 0 && kmcount > 0)
+		{
+			Decelaration1=((double)rdcount/(double)kmcount)*100;
+		}
+		if(duration > 0 && kmcount> 0)
+		{
+			OverSpeed1 =(((double)duration/10)/(double)kmcount)*100;
+		}
+		ratingcount=Accelaration1+Decelaration1+OverSpeed1;
+		ratingcountall=ratingcountall+ratingcount;
+		
+		if(kmcount > 0)
+		{
+		out.print(nf.format(ratingcount));	
+		}
+		else
+		{
+			out.print("NA");
+		}
+		%>
+		</div></td>
+		</tr>			
+		<%
+		k++;
+		}
+		%>	
+		<tr>
+		<td class="hed" colspan="2">Total :-</td>
+		<td class="hed"><div align="right"><%=tripcountall%></div></td>
+		<td class="hed"><div align="right"><%=drivercountall%></div></td>
+		<td class="hed"><div align="right"><%=vehcountall%></div></td>
+		<td class="hed"><div align="right"><%=kmcountall%></div></td>
+		<td class="hed"><div align="right"><%=oscountall%></div></td>
+		<td class="hed"><div align="right"><%=racountall%></div></td>
+		<td class="hed"><div align="right"><%=rdcountall%></div></td>
+		<td class="hed"><div align="right"><%=cdcountall%></div></td>
+		<%
+			if(ndcountall > 0)
+			{
+				%>
+				<td class="hed"><div align="right">Yes</div></td>
+				<%
+			}
+			else
+			{
+				%>
+				<td class="hed"><div align="right">No</div></td>
+				<%
+			}
+		%>
+			<td class="hed"><div align="right"><%=totpbrief%></div></td>
+			<td class="hed"><div align="right"><%=totpdebrief%></div></td>
+				<td class="hed"><div align="right">
+		<%
+			
+		if(kmcountall!=0)
+		{
+			aa=Double.valueOf(racountall);
+			aa=(aa/kmcountall);
+			aa=aa*100;
+
+			rr=Double.valueOf(rdcountall);
+			rr=(rr/kmcountall);
+			rr=rr*100;
+			
+			ss=Double.valueOf(oscountall/10);
+			ss=ss/kmcountall;
+			ss=ss*100;
+			
+			rt=aa+rr+ss;;
+		out.print(nf.format(rt));
+		}
+		else
+		{
+			out.print("NA");
+		}
+		%></div></td>
+		</tr>
+		</table>
+		<% 
+		}//end of started if
+		else
+		{
+
+
+			%>
+			<table border="1" width="100%" class="stats">
+			<tr>
+			<td align="center"><b>Sr.</b></td>
+			
+			<td  align="center"><b>TripID</b></td>
+			<td  align="center"><b>TripStartDate</b></td>
+			<td  align="center"><b>TripEndDate</b></td>
+			<td  align="center"><b>TripFrom</b></td>
+			<td  align="center"><b>TripTo</b></td>
+			<td  align="center"><b>Vehicle</b></td>
+			<td  align="center"><b>Distance</b></td>
+			<td  align="center"><b>StdDistance</b></td>
+			<td  align="center"><b>StdTransitTime</b></td>
+			<td align="center"><b>OS Duration<br>(in Sec)</b></td>
+			<td align="center"><b>RA Count</b></td>
+			<td  align="center"><b>RD Count</b></td>
+			<td align="center"><b>OS Count</b></td>
+			<td  align="center"><b>Rating</b></td>
+			<td  align="center"><b>CD</b></td>
+			<td  align="center"><b>ND</b></td>
+			<td align="center"><b>Basic</b></td>
+			<td align="center"><b>Module1</b></td>
+			<td  align="center"><b>Module2</b></td>
+			<td align="center"><b>Module3</b></td>
+			<td  align="center"><b>Module4</b></td>
+			<td  align="center"><b>Briefing</b></td>
+			<td  align="center"><b>BriefingTrainer</b></td>
+			<td  align="center"><b>BriefingComments</b></td>
+			<td  align="center"><b>Debriefing</b></td>
+			<td  align="center"><b>DebriefingTrainer</b></td>
+			<td  align="center"><b>DebriefingComments</b></td>
+			<td  align="center"><b>Category</b></td>
+						
+			</tr>
+	<%
+			int i1=1;
+			String tripid,vehregno,tripfrom,tripstartdate,tripto,tripendate,crcount,ndcounte,drivercode;
+			String basic="",module1="",module2="",module3="",module4="",category="";
+			String briefdone="",brieftrainername="",briefcomment="",debriefdone="",debrieftrainername="",debriefcomment="";
+			double stdkm=0.00, ttime=0.00,ratinge=0.00;
+			int distance,racounte,rdcounte,osduratione,oscounte;
+			String triplist;
+		
+			String sss="Select distinct(tripid) from t_completedjourney where gpname='Castrol' and StartDate >= '"+fromdate+"' AND Enddate <= '"+todate+"'";
+			ResultSet rs=sten.executeQuery(sss);
+			while(rs.next())
+			{
+				tripid=rs.getString("TripID");
+				
+				String ss1="Select DriverID,VehRegNo,StartPlace,StartDate,EndPlace,EndDate,KmTravelled,RACount,RDCount,OSDuration,OSCount,CRCount,NDCount from t_completedjourney where tripid ='"+rs.getString("tripid")+"' limit 1";
+				ResultSet rs1=sten1.executeQuery(ss1);
+				if(rs1.next())
+				{
+					drivercode=rs1.getString("DriverID");
+				    vehregno=rs1.getString("VehRegNo");
+					tripfrom=rs1.getString("StartPlace");
+					tripstartdate=rs1.getString("StartDate");
+					tripto=rs1.getString("EndPlace");
+					tripendate=rs1.getString("EndDate");
+					distance=rs1.getInt("KmTravelled");
+					racounte=rs1.getInt("RACount");
+					rdcounte=rs1.getInt("RDCount");
+					osduratione=rs1.getInt("OSDuration");
+					oscounte=rs1.getInt("OSCount");
+					crcount=rs1.getString("CRCount");
+					ndcounte=rs1.getString("NDCount");
+					
+					String ss2="SELECT Basic, Module1, Module2, Module3, Module4 FROM t_drivertraining WHERE dcode = '"+drivercode+"'";
+					ResultSet rs2=sten2.executeQuery(ss2);
+					if(rs2.next())
+					{
+						basic=rs2.getString("Basic");
+						module1=rs2.getString("Module1");
+						module2=rs2.getString("Module2");
+						module3=rs2.getString("Module3");
+						module4=rs2.getString("Module4");
+						
+					}
+					
+					String ss3="SELECT brifstatus,TrainerName,remarkcom FROM t_briefing WHERE tripid='"+tripid+"'";
+					ResultSet rs3=sten2.executeQuery(ss3);
+					
+					if(rs3.next())
+						
+					{//System.out.println("Hiiiiiiiiiii"); 
+						briefdone=rs3.getString("brifstatus");
+						brieftrainername=rs3.getString("TrainerName");
+						briefcomment=rs3.getString("remarkcom");
+					}
+					
+					String ss4="SELECT Trainername,remarkcom FROM t_debriefing WHERE tripid='"+tripid+"'";
+					ResultSet rs4=sten2.executeQuery(ss4);
+					
+					if(rs4.next())
+					{
+						//debriefdone="Yes";
+						debrieftrainername=rs4.getString("TrainerName");
+						debriefcomment=rs4.getString("remarkcom");
+					}
+					
+					String ss5="select Km,TTime from t_castrolroutes where StartPlace='"+tripfrom+"' and EndPlace='"+tripto+"'";
+					ResultSet rs5=sten2.executeQuery(ss5);
+					
+					if(rs5.next())
+					{
+						stdkm=rs5.getDouble("Km");
+						ttime=rs5.getDouble("TTime");
+					}
+					
+					String ss6="select Category from t_alljddata where TripId='"+tripid+"'";
+					ResultSet rs6=sten2.executeQuery(ss6);
+					
+					if(rs6.next())
+					{
+						category=rs6.getString("Category");
+					}
+					
+					
+					%>	
+					<tr>
+					<td><%=i%></td>
+					<td><div align="left"><%=tripid%></div></td>
+					<td><div align="left"><%=tripstartdate%></div></td>
+					<td><div align="left"><%=tripendate%></div></td>
+					<td><div align="left"><%=tripfrom%></div></td>
+					<td><div align="left"><%=tripto%></div></td>
+					<td><div align="left"><%=vehregno%></div></td>
+					<td><div align="left"><%=distance%></div></td>
+					<td><div align="left"><%=stdkm%></div></td>
+					<td><div align="left"><%=ttime%></div></td>
+					<td><div align="left"><%=osduratione%></div></td>
+					<td><div align="left"><%=racounte%></div></td>
+					<td><div align="left"><%=rdcounte%></div></td>
+					<td><div align="left"><%=oscounte%></div></td>
+					<td><div align="left">
+					
+					<%
+					ratinge=((Double.valueOf(racount))/(Double.valueOf(distance))*100)+((Double.valueOf(rdcount))/(Double.valueOf(distance))*100)+((Double.valueOf(osduration))/10/(Double.valueOf(distance))*100);
+
+					if(distance==0)
+					{
+						out.print("NA");
+					}
+					else
+					{
+						out.print(nf.format(ratinge));
+					}
+					%>
+					</div></td>
+			
+			<td><div align="left"><%=crcount%></div></td>
+			<td><div align="left"><%=ndcounte%></div></td>
+			<td><div align="left"><%=basic%></div></td>
+			<td><div align="left"><%=module1%></div></td>
+			<td><div align="left"><%=module2%></div></td>
+			<td><div align="left"><%=module3%></div></td>
+			<td><div align="left"><%=module4%></div></td>
+			<%
+			
+			if(briefdone.equalsIgnoreCase("briefed"))
+			{
+				%>
+				<td><div align="left"><%="Yes"%></div></td>
+				<%
+			}
+			else
+			{
+			%>
+			<td><div align="left"><%="No"%></div></td>
+			<%
+			}
+			%>
+			<td><div align="left"><%=brieftrainername%></div></td>
+			<td><div align="left"><%=briefcomment%></div></td>
+			<%
+			if(debriefdone.equalsIgnoreCase("debrifed"))
+			{
+			%>
+			<td><div align="left"><%="Yes"%></div></td>
+				<%
+			}
+			else
+			{
+			%>
+			<td><div align="left"><%="No"%></div></td>
+			<%
+			}
+			%>
+			<td><div align="left"><%=debrieftrainername%></div></td>
+			<td><div align="left"><%=debriefcomment%></div></td>
+			<td><div align="left"><%=category%></div></td>
+			</tr>
+		<%
+		   
+				}//end of while loop
+			i1++;
+			}
+		%>
+		</table>
+		<%
+					
+		
+		
+		}
+}
+
+//*********************************************************************************************
+} //the name
+} //try
+
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	//	System.out.println("In side exception");	
+	}
+}
+	%>
+	</table>
+	</body>
+	</html>
+<%@ include file="footernew.jsp" %>

@@ -1,0 +1,7 @@
+ SELECT *
+FROM `t_simmaster`
+WHERE `Simno` LIKE CONVERT( _utf8 '%8991272162103420411f%'
+USING latin1 )
+COLLATE latin1_swedish_ci
+ORDER BY `t_simmaster`.`DateOfPurchase` ASC
+LIMIT 1 

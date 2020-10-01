@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+	<name>~GE8616.kmz</name>
+	<Style id="default_copy0+icon=http://maps.google.com/mapfiles/kml/pal3/icon44.png">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal3/icon44.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<StyleMap id="default_copy0+nicon=http://maps.google.com/mapfiles/kml/pal3/icon44.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon36.png">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#default_copy0+icon=http://maps.google.com/mapfiles/kml/pal3/icon44.png</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#default_copy0+icon=http://maps.google.com/mapfiles/kml/pal3/icon36.png</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="default_copy0+icon=http://maps.google.com/mapfiles/kml/pal3/icon36.png">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal3/icon36.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>1.1</scale>
+		</LabelStyle>
+	</Style>
+	<Placemark>
+		<name>Rich Text Guide</name>
+		<description><![CDATA[Styles: <i>Italics</i>, <b>Bold</b>, <u>Underlined</u>, <s>Strike Out</s>, subscript<sub>subscript</sub>, superscript<sup>superscript</sup>,  <big>Big</big>, <small>Small</small>, <tt>Typewriter</tt>, <em>Emphasized</em>, <strong>Strong</strong>, <code>Code</code>
+<hr>
+Fonts: 
+<font color="red">red by name</font>, <font color="#408010">leaf green by hexadecimal RGB</font>, <font size=1>size 1</font>, <font size=2>size 2</font>, <font size=3>size 3</font>, <font size=4>size 4</font>, <font size=5>size 5</font>, <font size=6>size 6</font>, <font size=7>size 7</font>, <font face=times>Times</font>, <font face=verdana>Verdana</font>, <font face=arial>Arial</font><br>
+<hr>
+Links: <a href="http://doc.trolltech.com/3.3/qstylesheet.html">markup language</a><br>
+<hr>
+Alignment:<br>
+<p align=left>left</p><p align=center>center</p><p align=right>right</p>
+<hr>
+Ordered Lists:<br>
+<ol><li>First</li><li>Second</li><li>Third</li></ol>
+<ol type="a"><li>First</li><li>Second</li><li>Third</li></ol>
+<ol type="A"><li>First</li><li>Second</li><li>Third</li></ol>
+<hr>
+Unordered Lists:<br>
+<ul><li>A</li><li>B</li><li>C</li></ul>
+<ul type="circle"><li>A</li><li>B</li><li>C</li></ul>
+<ul type="square"><li>A</li><li>B</li><li>C</li></ul>
+<hr>
+Definitions:<br>
+<dl>
+<dt>Scrumpy</dt><dd>Hard English cider from the west country</dd>
+<dt>Ptanque</dt><dd>A form of boules where the goal is to throw metal balls as close as possible to a jack</dd>
+</dl>
+<hr>
+Block Quote:<br><blockquote>What is the price of experience? Do men buy it for a song? 
+Or wisdom for a dance in the street? No, it is bought with the price
+Of all a man hath, his house, his wife, his children. 
+Wisdom is sold in the desolate market where none come to buy, 
+And in the wither'd field where the farmer plows for bread in vain. 
+</blockquote><br>
+<hr>
+Centered:<br><center>See, I have a Rhyme assisting, my feeble brain, it's tasks oft-times resisting!</center>
+<hr>
+Headings:<br>
+<h1>Header 1</h1>
+<h2>Header 2</h2>
+<h3>Header 3</h3>
+<h3>Header 4</h4>
+<h3>Header 5</h5>
+<hr>
+Images:<br>
+<i>Local image</i><br>
+<img src="files/googleSample.png"><br>
+<i>Remote image</i><br>
+<img src="http://bbs.keyhole.com/ubb/z0302a1700/googleSample.png"><br>
+<i>Scaled image</i><br>
+<img src="http://bbs.keyhole.com/ubb/z0302a1700/googleSample.png" width=100><br>
+<hr>
+<center><font color="#408010"><i>Placemark indicates general location of</font> <a href="http://www.trolltech.com/">Trolltech, AS</a>.</i></center>
+<hr>]]></description>
+		<LookAt>
+			<longitude>18.74959938500418</longitude>
+			<latitude>79.92784792488835</latitude>
+			<altitude>0</altitude>
+			<range>476.3041588461545</range>
+			<tilt>14.95831883659528</tilt>
+			<heading>137.3390180678834</heading>
+		</LookAt>
+		<styleUrl>#default_copy0+nicon=http://maps.google.com/mapfiles/kml/pal3/icon44.png+hicon=http://maps.google.com/mapfiles/kml/pal3/icon36.png</styleUrl>
+		<Point id="khPoint579">
+			<coordinates>-118.279857,29.046254,0.737098</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>

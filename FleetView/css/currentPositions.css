@@ -1,0 +1,22 @@
+SPAN.searchword {
+	background-color: cyan;
+}
+
+SPAN.super {
+	text-decoration: blink;
+	text-align: center;
+}
+
+.popup {
+	background-color: #98AFC7;
+	position: absolute;
+	visibility: hidden; . popupnew { background-color : #98AFC7;
+	position: absolute;
+	visibility: visible; . popupx { background-color : #98AFC7;
+	position: absolute;
+	visibility: hidden;
+}
+
+BODY {
+	bgcolor="#FFE4E1";
+}

@@ -1,0 +1,802 @@
+ <html>
+<head>
+<style type="text/css">
+
+#dropmenudiv{
+position:absolute;
+border:1px solid black;
+border-bottom-width: 0;
+font:normal 10.5px Verdana, Arial, Helvetica, sans-serif;
+line-height:18px;
+z-index:100;
+}
+
+#dropmenudiv a{
+width: 100%;
+display: block;
+text-indent: 3px;
+border-bottom: 1px solid black;
+padding: 1px 0;
+text-decoration: none;
+font-weight: bold;
+}
+
+#dropmenudiv a:hover{ /*hover background color*/
+background-color: #465ea6;
+}
+
+</style>
+
+<script type="text/javascript">
+
+/***********************************************
+* AnyLink Drop Down Menu-  Dynamic Drive (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+//Contents for menu 1
+var menu1=new Array()
+var menu2=new Array()	
+var menu3=new Array()	
+var menu4=new Array()	
+var menu5=new Array()
+var menu6=new Array()
+var menu7=new Array()
+var menu8=new Array()
+var menu9=new Array()
+var menu10=new Array()
+var menu11=new Array()
+var menu12=new Array()
+var menu13=new Array()
+var menu14=new Array()
+var menu15=new Array()
+var menu16=new Array()
+var menu17=new Array()
+var menu18=new Array()
+var menu19=new Array()
+var menu20=new Array()
+var menu21=new Array()
+var menu22=new Array()
+var menu23=new Array()
+var menu24=new Array()
+var menu25=new Array()
+var menu26=new Array()
+var menu27=new Array()
+var menu28=new Array()
+var menu29=new Array()
+var menu30=new Array()
+var menu41=new Array()
+var menu42=new Array()
+var wait="4hrs";
+
+menu6[0]='<a href="#"><iframe src="http://hosted.comm100.com/LiveChat/AdminPanel/PlanPreview.aspx?siteId=43482&codePlanId=607&ssl=false" allowtransparency="true" frameborder="0" height="28" width="300"></iframe></a>'
+menu6[1]='<a href="#"><iframe src="http://www.google.com/talk/service/badge/Show?tk=z01q6amlq1el67hss1jjq5euo7vvijm1drq6qfjn26k3ael2o3diegupigtqkq79bc043n0frrcbabnobdfrom1h0e6cd1ior7m0bhhgdfmonbu4unfkq0ubj8g0se9pclkdne6icbnpiarmurdgo4k0648bb7bsifr5t7cul4ci9307e88ovbau9ula72sf3ls&amp;w=300&amp;h=18" allowtransparency="true" frameborder="0" height="18" width="300"></iframe></a>'
+menu6[2]='<a href="#"><iframe src="http://www.google.com/talk/service/badge/Show?tk=z01q6amlquju874k7lik7lkq8lk4dlogd8545i44tcm2pinve3lj2b9qf2lp3piko89u4lt1u6goqnk9aj1tqkne341mc73ggaa5c8rual12u07d9mscn9d162lq7fs8f6qpraa8c7etqsglkt7d44ae7lgotgbualhl0q1alkuk8cip2itms8kbeffetm7iv24&amp;w=300&amp;h=18" allowtransparency="true" frameborder="0" height="18" width="300"></iframe></a>'
+menu6[3]='<a href="#"><iframe src="http://www.google.com/talk/service/badge/Show?tk=z01q6amlqgr9m46ka42ifsuh498at4nmlmakbdlrm4k5umdbiabv6d7u5ur9f6289lpniveduii45jrm6r35clcpacki1vhk7884ts3dr08ntqh6e2mklrc5kif21mvr7l9jheqck5phbp8ie9le0ea410qbn92buqpu6n9h24hgv302doj54kieqb1j44ks83g&amp;w=300&amp;h=18" allowtransparency="true" frameborder="0" height="18" width="300"></iframe></a>'
+	//----------------------------------------------------menu for others------------------------------------
+menu12[0]='<a href="StudentDetails.jsp">Student Detail report</a>'	
+menu12[1]='<a href="StudentDetailsEntry.jsp">Students details entry form</a>' 
+menu12[2]='<a href="StudentAlertReport.jsp">Students SMS Alert Report</a>'
+menu12[3]='<a href="inoutstampdetails.jsp">Students IN/OUT Details</a>'
+menu12[4]='<a href="caretakerdetails.jsp">Care taker entry form</a>'
+menu12[5]='<a href="JRMReport.jsp">JRM Report</a>'
+
+////// Report tab SUBUSER (he login)////////////////
+menu1[0]='<a href="currentposition.jsp">Current Position</a>'
+//menu1[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+menu1[1]='<a href="reportbyplace.jsp">Vehicles In Geofenced Location</a>'
+menu1[2]='<a href="last24hours.jsp">Report For Last 1 Day</a>'
+menu1[3]='<a href="last48hours.jsp">Report For Last 2 Days</a>'
+menu1[4]='<a href="last7days.jsp">Report For Last 7 Days</a>'
+menu1[5]='<a href="last15days.jsp">Report For Last 15 Days</a>'
+menu1[6]='<a href="report.jsp">Custom Report</a>'
+menu1[7]='<a href="vehiclewaiting.jsp?waithrs=4hrs">Vehicle Waiting</a>'
+menu1[8]='<a href="my_trips.jsp">My Trips</a>'
+menu1[9]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+menu1[10]='<a href="HeadLightOnOf.jsp">Head Light On Off Report</a>'
+menu1[11]='<a href="VehicleMentananceReport.jsp">Vehicle Maintenance Report</a>'
+menu1[12]='<a href="smsreport.jsp">SMSReport</a>'
+menu1[13]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+menu1[14]='<a href="VehMasterReport.jsp">Vehicle Master Report</a>'
+//menu1[14]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+menu1[15]='<a href="JRMReport.jsp">JRM Report</a>'
+menu1[16]='<a href="tree.htm">ORG Chart</a>'
+menu1[17]='<a href="userreport.jsp">User Creation Report</a>'
+menu1[18]='<a href="FleetSummaryErp_All.jsp">Fleet Summary Report</a>'
+	menu1[19]='<a href="sensorRep.jsp">Sensor Report</a>'
+		menu1[20]='<a href="dailystatusreport.jsp">Daily Status Report</a>'
+			menu1[21]='<a href="DoorSensorReport.jsp"> Door Sensor Report</a>'
+		 
+		
+	
+////////////////////////////////////////////
+
+/// Report tab SUBUSER and  typevalue castrol (he login)////////////////
+menu21[0]='<a href="currentposition.jsp">Current Position</a>'
+//menu1[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+menu21[1]='<a href="reportbyplace.jsp">Vehicles In Geofenced Location</a>'
+menu21[2]='<a href="last24hours.jsp">Report For Last 1 Day</a>'
+menu21[3]='<a href="last48hours.jsp">Report For Last 2 Days</a>'
+menu21[4]='<a href="last7days.jsp">Report For Last 7 Days</a>'
+menu21[5]='<a href="last15days.jsp">Report For Last 15 Days</a>'
+menu21[6]='<a href="report.jsp">Custom Report</a>'
+menu21[7]='<a href="vehiclewaiting.jsp?waithrs=4hrs">Vehicle Waiting</a>'
+menu21[8]='<a href="my_trips.jsp">My Trips</a>'
+menu21[9]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+menu21[10]='<a href="HeadLightOnOf.jsp">Head Light On Off Report</a>'
+menu21[11]='<a href="VehicleMentananceReport.jsp">Vehicle Maintenance Report</a>'
+menu21[12]='<a href="smsreport.jsp">SMSReport</a>'
+menu21[13]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+menu21[14]='<a href="VehMasterReport.jsp">Vehicle Master Report</a>'
+//menu1[14]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+menu21[15]='<a href="JRMReport.jsp">JRM Report</a>'
+menu21[16]='<a href="tree.htm">ORG Chart</a>'
+menu21[17]='<a href="vehlockunlock.jsp">Fleet Audit Report</a>'
+menu21[18]='<a href="CastrolMonthlyTripReportLevel1.jsp">Castrol Monthly Report</a>'
+menu21[19]='<a href="FleetSummaryErp_All.jsp">Fleet Summary Report</a>'
+menu21[20]='<a href="sensorRep.jsp">Sensor Report</a>'
+	
+
+////// Report tab for SGTransport////////////////
+menu19[0]='<a href="currentposition.jsp">Current Position</a>'
+//menu1[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+menu19[1]='<a href="reportbyplace.jsp">Vehicles In Geofenced Location</a>'
+menu19[2]='<a href="last24hours.jsp">Report For Last 1 Day</a>'
+menu19[3]='<a href="last48hours.jsp">Report For Last 2 Days</a>'
+menu19[4]='<a href="last7days.jsp">Report For Last 7 Days</a>'
+menu19[5]='<a href="last15days.jsp">Report For Last 15 Days</a>'
+menu19[6]='<a href="report.jsp">Custom Report</a>'
+menu19[7]='<a href="vehiclewaiting.jsp?waithrs=4hrs">Vehicle Waiting</a>'
+menu19[8]='<a href="my_trips.jsp">My Trips</a>'
+menu19[9]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+menu19[10]='<a href="HeadLightOnOf.jsp">Head Light On Off Report</a>'
+menu19[11]='<a href="VehicleMentananceReport.jsp">Vehicle Maintenance Report</a>'
+menu19[12]='<a href="smsreport.jsp">SMSReport</a>'
+menu19[13]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+menu19[14]='<a href="VehMasterReport.jsp">Vehicle Master Report</a>'
+menu19[15]='<a href="doorSensorReport.jsp">Door Access Report</a>'
+//menu1[14]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+menu19[16]='<a href="JRMReport.jsp">JRM Report</a>'
+menu19[17]='<a href="tree.htm">ORG Chart</a>'
+menu19[18]='<a href="FleetSummaryErp_All.jsp">Fleet Summary Report</a>'
+menu19[19]='<a href="sensorRep.jsp">Sensor Report</a>'	
+////////////////////////////////////////////
+
+//----------------------------------------Report for Monsanto------------------------------------------------------------------
+menu16[0]='<a href="currentposition.jsp">Current Position</a>'
+//menu1[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+menu16[1]='<a href="reportbyplace.jsp">Vehicles In Geofenced Location</a>'
+menu16[2]='<a href="last24hours.jsp">Report For Last 1 Day</a>'
+menu16[3]='<a href="last48hours.jsp">Report For Last 2 Days</a>'
+menu16[4]='<a href="last7days.jsp">Report For Last 7 Days</a>'
+menu16[5]='<a href="last15days.jsp">Report For Last 15 Days</a>'
+menu16[6]='<a href="report.jsp">Custom Report</a>'
+menu16[7]='<a href="vehiclewaiting.jsp?waithrs=4hrs">Vehicle Waiting</a>'
+menu16[8]='<a href="my_trips.jsp">My Trips</a>'
+menu16[9]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+menu16[10]='<a href="HeadLightOnOf.jsp">Head Light On Off Report</a>'
+menu16[11]='<a href="VehicleMentananceReport.jsp">Vehicle Maintenance Report</a>'
+menu16[12]='<a href="smsreport.jsp">SMSReport</a>'
+menu16[13]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+//menu16[14]='<a href="map1.jsp">District Report</a>'
+//menu16[15]='<a href="DistrictSale.jsp">District Report 1</a>'
+menu16[14]='<a href="VehMasterReport.jsp">Vehicle Master Report</a>'
+//menu16[15]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+menu16[15]='<a href="JRMReport.jsp">JRM Report</a>'
+menu16[16]='<a href="tree.htm">ORG Chart</a>'
+menu16[17]='<a href="userreport.jsp">User Creation Report</a>'
+menu16[18]='<a href="FleetSummaryErp_All.jsp">Fleet Summary Report</a>'
+menu16[19]='<a href="sensorRep.jsp">Sensor Report</a>'
+	
+
+//----------------------------------------------------report tab for admin (ie. typeofuser=ALL)------------------------------------
+menu10[0]='<a href="currentposition.jsp">Current Position</a>'
+//menu10[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+menu10[1]='<a href="reportbyplace.jsp">Vehicles In Geofenced Location</a>'
+menu10[2]='<a href="last24hours.jsp">Report For Last 1 Day</a>'
+menu10[3]='<a href="last48hours.jsp">Report For Last 2 Days</a>'
+menu10[4]='<a href="last7days.jsp">Report For Last 7 Days</a>'
+menu10[5]='<a href="last15days.jsp">Report For Last 15 Days</a>'
+menu10[6]='<a href="report.jsp">Custom Report</a>'
+menu10[7]='<a href="vehiclewaiting.jsp?waithrs=4hrs">Vehicle Waiting</a>'
+menu10[8]='<a href="my_trips.jsp">My Trips</a>'
+menu10[9]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+menu10[10]='<a href="HeadLightOnOf.jsp">Head Light On Off Report</a>'
+menu10[11]='<a href="DistanceJump.jsp">Distance Jump Report</a>'
+menu10[12]='<a href="CastrolMonthlyTripReportLevel1.jsp">Castrol Monthly Report</a>'
+menu10[13]='<a href="tripReport.jsp">All Trips Report</a>'
+//menu10[14]='<a href="baskml_markers.jsp">JRM Map</a>'
+//menu10[16]='<a href="ValueZeroContestReportNonTanker.jsp">Value Zero Contest NonTanker Driver Report</a>'
+menu10[14]='<a href="ValueZeroContestReport.jsp">Manzil Zero Contest 2012</a>'
+menu10[15]='<a href="smsreport.jsp">SMSReport</a>'
+menu10[16]='<a href="dailystatusreport.jsp">Daily Status Report</a>'
+//menu10[16]='<a href="integration1.jsp">Daily Status Report</a>'
+//menu10[16]='<a href=http://173.234.153.82:8080/SpagoBI/servlet/AdapterHTTP?ACTION_NAME=EXECUTE_DOCUMENT_ACTION&NEW_SESSION=TRUE&OBJECT_LABEL=Agility Report">Daily Status Report</a>'
+menu10[17]='<a href="VehicleMentananceReport.jsp">Vehicle Maintenance Report</a>'
+menu10[18]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+menu10[19]='<a href="VehMasterReport.jsp">Vehicle Master Report</a>'
+//menu10[21]='<a href="map1.jsp">District Report</a>'
+//menu10[22]='<a href="DistrictSale.jsp">District Report 1</a>'
+//menu10[23]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+menu10[20]='<a href="doorSensorReport.jsp">Door Access Report</a>'
+menu10[21]='<a href="JRMReport.jsp">JRM Report</a>'
+menu10[22]='<a href="tree.htm">ORG Chart</a>'
+menu10[23]='<a href="PMFReport.jsp">PMF Report</a>'
+menu10[24]='<a href="vehlockunlock.jsp">Fleet Audit Report</a>'
+menu10[25]='<a href="MapSelection.jsp">Map Report</a>'
+menu10[26]='<a href="userreport.jsp">User Creation Report</a>'
+menu10[27]='<a href="FleetSummaryErp_All.jsp">Fleet Summary Report</a>'
+menu10[28]='<a href="IncidentReport.jsp">Incident Report </a>'
+	menu10[29]='<a href="sensorRep.jsp">Sensor Report</a>'
+		
+
+
+
+	//----------------------------------------------------report tab for for Shankar------------------------------------
+		menu11[0]='<a href="currentposition.jsp">Current Position</a>'
+	//	menu11[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+		menu11[1]='<a href="reportbyplace.jsp">Vehicles In Geofenced Location</a>'
+		menu11[2]='<a href="last24hours.jsp">Report For Last 1 Day</a>'
+		menu11[3]='<a href="last48hours.jsp">Report For Last 2 Days</a>'
+		menu11[4]='<a href="last7days.jsp">Report For Last 7 Days</a>'
+		menu11[5]='<a href="last15days.jsp">Report For Last 15 Days</a>'
+		menu11[6]='<a href="report.jsp">Custom Report</a>'
+		menu11[7]='<a href="vehiclewaiting.jsp?waithrs=4hrs">Vehicle Waiting</a>'
+		menu11[8]='<a href="my_trips.jsp">My Trips</a>'
+		menu11[9]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+		menu11[10]='<a href="HeadLightOnOf.jsp">Head Light On Off Report</a>'
+		//menu11[11]='<a href="DistanceJump.jsp">Distance Jump Report</a>'
+		menu11[11]='<a href="CastrolMonthlyTripReportLevel1.jsp">Castrol Monthly Report</a>'
+		//menu11[12]='<a href="baskml_markers.jsp">JRM Map</a>'
+		//menu11[14]='<a href="ValueZeroContestReportNonTanker.jsp">Value Zero Contest NonTanker Driver Report</a>'
+		menu11[12]='<a href="ValueZeroContestReport.jsp">Manzil Zero Contest 2012</a>'
+		menu11[13]='<a href="smsreport.jsp">SMSReport</a>'
+		menu11[14]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+		menu11[15]='<a href="VehMasterReport.jsp">Vehicle Master Report</a>'
+		//menu11[16]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+		//menu11[16]='<a href="jrmtoday.jsp">JRM Route</a>'	
+		menu11[16]='<a href="JRMReport.jsp">JRM Report</a>'
+		menu11[17]='<a href="tree.htm">ORG Chart</a>'	
+		menu11[18]='<a href="vehlockunlock.jsp">Fleet Audit Report</a>'
+		menu11[19]='<a href="FleetSummaryErp_All.jsp">Fleet Summary Report</a>'
+		menu11[19]='<a href="sensorRep.jsp">Sensor Report</a>'	
+			
+				
+//////////////////////////Report tab for Castrol Transporters////////////////////////////////////
+menu13[0]='<a href="currentposition.jsp">Current Position</a>'
+//menu13[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+menu13[1]='<a href="reportbyplace.jsp">Vehicles In Geofenced Location</a>'
+menu13[2]='<a href="last24hours.jsp">Report For Last 1 Day</a>'
+menu13[3]='<a href="last48hours.jsp">Report For Last 2 Days</a>'
+menu13[4]='<a href="last7days.jsp">Report For Last 7 Days</a>'
+menu13[5]='<a href="last15days.jsp">Report For Last 15 Days</a>'
+menu13[6]='<a href="report.jsp">Custom Report</a>'
+menu13[7]='<a href="vehiclewaiting.jsp?waithrs=4hrs">Vehicle Waiting</a>'
+menu13[8]='<a href="my_trips.jsp">My Trips</a>'
+menu13[9]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+//menu13[11]='<a href="HeadLightOnOf.jsp">Head Light On Off Report</a>'
+menu13[10]='<a href="VehicleMentananceReport.jsp">Vehicle Maintenance Report</a>'
+menu13[11]='<a href="smsreport.jsp">SMSReport</a>'
+menu13[12]='<a href="dailystatusreport.jsp">Daily Status Report</a>'
+menu13[13]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+menu13[14]='<a href="VehMasterReport.jsp">Vehicle Master Report</a>'
+//menu13[14]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+//menu13[14]='<a href="CastrolMonthlyTripReportLevel1.jsp">Castrol Monthly Report</a>'
+//menu13[15]=	'<a href="ValueZeroContestReport.jsp">Value Zero Contest 2011</a>'
+//menu13[16]='<a href="jrmtoday.jsp">JRM Route</a>'
+menu13[15]='<a href="JRMReport.jsp">JRM Report</a>'
+menu13[16]='<a href="tree.htm">ORG Chart</a>'
+menu13[17]='<a href="userreport.jsp">User Creation Report</a>'
+menu13[18]='<a href="FleetSummaryErp_All.jsp">Fleet Summary Report</a>'
+menu13[19]='<a href="sensorRep.jsp">Sensor Report</a>'
+	
+///////////////////////////////////////////////////////////////////////////////////////////
+menu25[0]='<a href="currentposition.jsp">Current Position</a>'
+//menu13[1]='<a href="RegisterComplaint.jsp">RegisterComplaint</a>'
+menu25[1]='<a href="reportbyplace.jsp">Vehicles In Geofenced Location</a>'
+menu25[2]='<a href="last24hours.jsp">Report For Last 1 Day</a>'
+menu25[3]='<a href="last48hours.jsp">Report For Last 2 Days</a>'
+menu25[4]='<a href="last7days.jsp">Report For Last 7 Days</a>'
+menu25[5]='<a href="last15days.jsp">Report For Last 15 Days</a>'
+menu25[6]='<a href="report.jsp">Custom Report</a>'
+menu25[7]='<a href="vehiclewaiting.jsp?waithrs=4hrs">Vehicle Waiting</a>'
+menu25[8]='<a href="my_trips.jsp">My Trips</a>'
+menu25[9]='<a href="disconnectReport.jsp">Disconnection Report</a>'
+//menu13[11]='<a href="HeadLightOnOf.jsp">Head Light On Off Report</a>'
+menu25[10]='<a href="VehicleMentananceReport.jsp">Vehicle Maintenance Report</a>'
+menu25[11]='<a href="smsreport.jsp">SMSReport</a>'
+menu25[12]='<a href="dailystatusreport.jsp">Daily Status Report</a>'
+menu25[13]='<a href="ComplaintReport.jsp">Complaint Report</a>'
+menu25[14]='<a href="VehMasterReport.jsp">Vehicle Master Report</a>'
+//menu13[14]='<a href="powerDisconnectReport.jsp">Mains Off Report</a>'
+//menu13[14]='<a href="CastrolMonthlyTripReportLevel1.jsp">Castrol Monthly Report</a>'
+//menu13[15]=	'<a href="ValueZeroContestReport.jsp">Value Zero Contest 2011</a>'
+//menu13[16]='<a href="jrmtoday.jsp">JRM Route</a>'
+menu25[15]='<a href="JRMReport.jsp">JRM Report</a>'
+menu25[16]='<a href="tree.htm">ORG Chart</a>'
+menu25[17]='<a href="userreport.jsp">User Creation Report</a>'
+menu25[18]='<a href="FleetSummaryErp_All.jsp">Fleet Summary Report</a>'
+menu25[19]='<a href="Homeerpl.jsp">Zone Wise View</a>'
+menu25[20]='<a href="sensorRep.jsp">Sensor Report</a>'
+	
+
+////////////////// my location tab for HE Login /////////////////////
+	menu4[0]='<a href="currentlocation.jsp">Vehicle in My Location</a>'
+	menu4[1]='<a href="departed.jsp">Vehicle Departed</a>'	
+	menu4[2]='<a href="arrived.jsp">Vehicle Arrived</a>'
+	menu4[3]='<a href="vehicleavailable.jsp">Vehicle Available (Waiting)</a>'
+/////////////////////////////////////////////////////////////////
+
+////////////////// my location tab for HE Login /////////////////////
+	menu41[0]='<a href="VehiclePosition.jsp">Current Position</a>'
+	//menu41[1]='<a href="departed.jsp">Vehicle Departed</a>'	
+	//menu41[2]='<a href="arrived.jsp">Vehicle Arrived</a>'
+	//menu41[3]='<a href="vehicleavailable.jsp">Vehicle Available (Waiting)</a>'
+/////////////////////////////////////////////////////////////////
+
+////////////////// my location DataEntry tab for HE Login /////////////////////
+	//menu42[0]='<a href="currentlocation.jsp">Vehicle in My Location</a>'
+		menu42[0]='<a href="changepass.jsp">Personal Details</a>'
+/////////////////////////////////////////////////////////////////
+
+
+////////////////////// my location tab for typeof user GROUP and ALL & shanker sir////////////////
+	menu3[0]='<a href="location.jsp">Select Location</a>'
+	//menu3[1]='<a href="currentlocation.jsp">Vehicle in Place</a>'
+	menu3[1]='<a href="departed.jsp">Vehicle Departed</a>'	
+	menu3[2]='<a href="arrived.jsp">Vehicle Arrived</a>'
+	menu3[3]='<a href="vehicleavailable.jsp">Vehicle Available</a>'
+///////////////////////////////////////////////////////////////////////////////////
+
+//non- castrol transporters dont have journey tab
+
+///////////////////// journey tab for Castrol transporter login & castrol login (ie. shanker  sir)/////////////////
+menu27[0]='<a href="nontrans_trip_report.jsp">Non Trips Report</a>'
+menu27[1]='<a href="driverrating.jsp">Top/Bottom 20 Drivers</a>'
+menu27[2]='<a href="drivertrans.jsp">Top/Bottom 20 Transporterwise Drivers</a>'
+menu27[3]='<a href="trans_driverwiseexceptions.jsp">Driver Wise Exception Report</a>'
+menu27[4]='<a href="Driver_briefing_New.jsp">DMC</a>'
+menu27[5]='<a href="KPIReport.jsp">KPI Report</a>'
+menu27[6]='<a href="brifhistory.jsp">Driver Briefing/Debriefing History</a>'
+menu27[7]='<a href="driverIncentiveDetails.jsp">Driver Incentive-Primary & Secondary</a>'
+menu27[8]='<a href="driverIncentiveDetailsTanker.jsp">Driver Incentive-Tanker</a>'
+menu27[9]='<a href="selfauditForm.jsp">Contractor Incentive</a>'
+menu27[10]='<a href="trainerhistory.jsp?trNm=Castrol&pgFrom=brif">Trainer History</a>'
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//menu5[0]='<a href="trip_report.jsp">Trips Report</a>'	
+menu5[0]='<a href="nontrans_trip_report.jsp">Non Trips Report</a>'
+menu5[1]='<a href="driverrating.jsp">Top/Bottom 20 Drivers</a>'
+menu5[2]='<a href="drivertrans.jsp">Top/Bottom 20 Transporterwise Drivers</a>'
+
+//menu5[4]='<a href="trans_trip_billing_report.jsp">Trip Billing Report</a>'
+menu5[3]='<a href="trans_driverwiseexceptions.jsp">Driver Wise Exception Report</a>'
+//menu5[6]='<a href="trans_searchtrip.jsp">Custom Trip Report</a>'
+//menu5[7]='<a href="vehiclewisetrips.jsp">Vehicle Wise Trips</a>'
+//menu5[7]='<a href="driver_briefing.jsp">Driver Briefing/Debriefing Form</a>'
+menu5[4]='<a href="Driver_briefing_New.jsp">DMC</a>'
+menu5[5]='<a href="KPIReport.jsp">KPI Report</a>'
+menu5[6]='<a href="brifhistory.jsp">Driver Briefing/Debriefing History</a>'
+menu5[7]='<a href="driverIncentiveDetails.jsp">Driver Incentive-Primary & Secondary</a>'
+menu5[8]='<a href="driverIncentiveDetailsTanker.jsp">Driver Incentive-Tanker</a>'
+//menu5[11]='<a href="cleanerentry.jsp">Cleaner Entry</a>'
+
+//////////////////////////////////////////////////////////////////////
+
+////////////////////// journey tab HE login////////////////////////
+//menu2[0]='<a href="trip_report.jsp">Trips Report</a>'	
+menu2[3]='<a href="driverrating.jsp">Top/Bottom 20 Drivers</a>'
+menu2[4]='<a href="drivertrans.jsp">Top/Bottom 20 Transporterwise Drivers</a>'
+menu2[5]='<a href="trans_driverwiseexceptions.jsp">Driver Wise Exception Report</a>'
+menu2[6]='<a href="driverratingbydate.jsp">Driver Rating Report</a>'
+// menu2[11]='<a href="driver_briefing.jsp">Driver Briefing/Debriefing Form</a>'
+menu2[11]='<a href="Driver_briefing_New.jsp">DMC</a>'
+menu2[13]='<a href="KPIReport.jsp">KPI Report</a>'
+menu2[14]='<a href="brifhistory.jsp">Driver Briefing/Debriefing History</a>'
+menu2[15]='<a href="trainerhistory.jsp?trNm=Castrol&pgFrom=brif">Trainer History</a>'
+menu2[16]='<a href="driverIncentiveDetails.jsp">Driver Incentive-Primary & Secondary</a>'
+menu2[17]='<a href="driverIncentiveDetailsTanker.jsp">Driver Incentive-Tanker</a>'
+	//menu2[17]='<a href="cleanerentry.jsp">Cleaner Entry</a>'
+		
+//menu2[17]='<a href="New_driver_briefing.jsp">DMC</a>'
+		
+//////////////////////////////////////////////////////////
+
+
+
+
+
+
+/////////////// dashboard for SUBUSER & Castrol GROUP & Castrol transporter login /////////////////////
+
+	menu14[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+	menu14[1]='<a href="stopanalysis.jsp">Run Analysis</a>'
+	menu14[2]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+	menu14[3]='<a href="UploadExcelForm.jsp">Upload Trip Data</a>'
+	menu14[4]='<a href="UploadTripClosureExcel.jsp">Upload Trip Closure Data</a>'
+	menu14[5]='<a href="Fuelinfo.jsp">Fuel Report</a>'
+	menu14[6]='<a href="Odometer.jsp">Odometer Report</a>'
+	menu14[7]='<a href="JRMRoute.jsp">JRM Route</a>'
+	menu14[8]='<a href="Intervention_report.jsp">Trip Violations Report</a>'
+	menu14[9]='<a href="interventionreport_closed.jsp">Closed Violations Report</a>'
+	menu14[10]='<a href="Reportforcleaner.jsp">Cleaner Entry</a>'
+	menu14[11]='<a href="addunit_ft.jsp">Vehicle Addtion form </a>'
+	menu14[12]='<a href="CameraSummaryReport.jsp">Camera Report</a>'
+	menu14[13]='<a href="Standardinput.jsp">Standard Entry</a>'
+	menu14[14]='<a href="Reportfornewroute.jsp">Route Entry</a>'
+	menu14[15]='<a href="Reportfordriver.jsp">Driver Entry</a>'
+		menu14[16]='<a href="Licenseexpiryreport.jsp">Driver License Expiry Report</a>'
+	menu14[17]='<a href="uploadExcelSheet.jsp">Upload Bulk Incentive</a>'  // ad
+	menu14[18]='<a href="IncentiveUploadReport.jsp">Bulk Incentive Report</a>'
+	menu14[19]='<a href="TripTransit.jsp">Trip Transit Report</a>'
+	menu14[20]='<a href="GeoEntryExitReport.jsp">GeofenceEntryExit</a>'
+		menu14[21]='<a href="GeofenceLocation1.jsp">GeofenceLocationReport</a>'
+		menu14[22]='<a href="RakshakReport.jsp">Rakshak Report</a>'
+			menu14[23]='<a href="SensorDetailRep.jsp"> Detail Report</a>'
+				menu14[24]='<a href="VehicleMaintenanceDueReport.jsp"> Vehicle Renewal Report</a>'
+				menu14[25]='<a href="DoorSensorReport.jsp"> Door Sensor Report</a>'
+					menu14[26]='<a href="Vehicleftpr.jsp"> Vehicle Ftpr Report</a>'
+						menu14[27]='<a href="Usertag.jsp">Vehicle Tagging Report</a>'
+//------------------------------------------------------------------------------------------------------------------------			
+	///////////////////////////////////////////////////////
+	
+	/////////////////////////NON Castrol transporters && NON Castrol group ///////////////////////
+	menu17[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+	menu17[1]='<a href="stopanalysis.jsp">Run Analysis</a>'
+	menu17[2]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+	menu17[3]='<a href="UploadExcelForm.jsp">Upload Trip Data</a>'
+	menu17[4]='<a href="UploadTripClosureExcel.jsp">Upload Trip Closure Data</a>'
+	menu17[5]='<a href="Fuelinfo.jsp">Fuel Report</a>'
+	menu17[6]='<a href="Odometer.jsp">Odometer Report</a>'
+	menu17[7]='<a href="Reportforcleaner.jsp">Cleaner Entry</a>'			
+	menu17[8]='<a href="addunit_ft.jsp">Vehicle Addtion form </a>'	
+	menu17[9]='<a href="Standardinput.jsp">Standard Entry</a>'
+	menu17[10]='<a href="Reportfornewroute.jsp">Route Entry</a>'
+	menu17[11]='<a href="Reportfordriver.jsp">Driver Entry</a>'
+		menu17[12]='<a href="Licenseexpiryreport.jsp">Driver License Expiry Report</a>'
+	menu17[13]='<a href="TripTransit.jsp">Trip Transit Report</a>'
+	menu17[14]='<a href="CameraSummaryReport.jsp">Camera Report</a>'
+	menu17[15]='<a href="GeoEntryExitReport.jsp">GeofenceEntryExit</a>'
+		menu17[16]='<a href="GeofenceLocation1.jsp">GeofenceLocationReport</a>'
+		menu17[17]='<a href="RakshakReport.jsp">Rakshak Report</a>'
+			menu17[18]='<a href="SensorDetailRep.jsp">Sensor Detail Report</a>'
+				menu17[19]='<a href="VehicleMaintenanceDueReport.jsp"> Vehicle Renewal Report</a>'
+					menu17[20]='<a href="Vehicleftpr.jsp"> Vehicle Ftpr Report</a>'
+						menu18[21]='<a href="Usertag.jsp">Vehicle Tagging Report</a>'
+				
+		menu26[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+		menu26[1]='<a href="stopanalysis.jsp">Run Analysis</a>'
+		menu26[2]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+		menu26[3]='<a href="UploadExcelForm.jsp">Upload Trip Data</a>'
+		menu26[4]='<a href="UploadTripClosureExcel.jsp">Upload Trip Closure Data</a>'
+		menu26[5]='<a href="Fuelinfo.jsp">Fuel Report</a>'
+		menu26[6]='<a href="Odometer.jsp">Odometer Report</a>'
+		menu26[7]='<a href="Reportforcleaner.jsp">Cleaner Entry</a>'			
+		menu26[8]='<a href="addunit_ft.jsp">Vehicle Addtion form </a>'	
+		menu26[9]='<a href="Standardinput.jsp">Standard Entry</a>'
+		menu26[10]='<a href="Reportfornewroute.jsp">Route Entry</a>'
+		menu26[11]='<a href="Reportfordriver.jsp">Driver Entry</a>'
+			menu26[12]='<a href="Licenseexpiryreport.jsp">Driver License Expiry Report</a>'
+		menu26[13]='<a href="batterytheft.jsp">Battery Theft Report</a>'	
+		menu26[14]='<a href="TripTransit.jsp">Trip Transit Report</a>'
+		menu26[15]='<a href="CameraSummaryReport.jsp">Camera Report</a>'	
+		menu26[16]='<a href="GeoEntryExitReport.jsp">GeofenceEntryExit</a>'
+			menu26[17]='<a href="GeofenceLocation1.jsp">GeofenceLocationReport</a>'
+			menu26[18]='<a href="RakshakReport.jsp">Rakshak Report</a>'
+				menu26[19]='<a href="SensorDetailRep.jsp">Sensor Detail Report</a>'
+					menu26[20]='<a href="VehicleMaintenanceDueReport.jsp"> Vehicle Renewal Report</a>'
+						menu26[21]='<a href="Usertag.jsp">Vehicle Tagging Report</a>'
+	/////////////////////////////////////////////////////////
+	
+	menu23[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+	menu23[1]='<a href="stopanalysis.jsp">Run Analysis</a>'
+	menu23[2]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+	menu23[3]='<a href="UploadExcelForm.jsp">Upload Trip Data</a>'
+	menu23[4]='<a href="UploadTripClosureExcel.jsp">Upload Trip Closure Data</a>'
+	menu23[5]='<a href="Fuelinfo.jsp">Fuel Report</a>'
+	menu23[6]='<a href="Odometer.jsp">Odometer Report</a>'
+	menu23[7]='<a href="MixerStatusreport.jsp">Mixer Status Report</a>'
+	menu23[8]='<a href="AuxiliaryStatusReport.jsp">Auxiliary Engine Status Report</a>'
+	menu23[9]='<a href="addunit_ft.jsp">Vehicle Addtion form </a>'
+	menu23[10]='<a href="TripTransit.jsp">Trip Transit Report</a>'
+	menu23[11]='<a href="GeoEntryExitReport.jsp">GeofenceEntryExit</a>'
+		menu23[12]='<a href="GeofenceLocation1.jsp">GeofenceLocationReport</a>'
+		menu23[12]='<a href="RakshakReport.jsp">Rakshak Report</a>'
+			menu23[13]='<a href="SensorDetailRep.jsp">Sensor Detail Report</a>'
+				menu23[14]='<a href="VehicleMaintenanceDueReport.jsp"> Vehicle Renewal Report</a>'
+					menu23[15]='<a href="DoorSensorReport.jsp"> Door Sensor Report</a>'
+						menu23[16]='<a href="Vehicleftpr.jsp"> Vehicle Ftpr Report</a>'
+							menu23[17]='<a href="Usertag.jsp">Vehicle Tagging Report</a>'
+					
+/////////////////////////dashboard forMonsanto ///////////////////////
+    menu18[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+	menu18[1]='<a href="stopanalysis.jsp">Run Analysis</a>'
+	menu18[2]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+	menu18[3]='<a href="UploadExcelForm.jsp">Upload Trip Data</a>'
+	menu18[4]='<a href="UploadTripClosureExcel.jsp">Upload Trip Closure Data</a>'
+	menu18[5]='<a href="Fuelinfo.jsp">Fuel Report</a>'
+	menu18[6]='<a href="Odometer.jsp">Odometer Report</a>'
+    menu18[7]='<a href="androidCurrentPosition.jsp">Mobile Demo</a>'
+    menu18[8]='<a href="addunit_ft.jsp">Vehicle Addtion form </a>'  
+    menu18[9]='<a href="TripTransit.jsp">Trip Transit Report</a>'	
+    menu18[10]='<a href="GeoEntryExitReport.jsp">GeofenceEntryExit</a>'  
+    	menu18[11]='<a href="GeofenceLocation1.jsp">GeofenceLocationReport</a>'
+    	menu18[12]='<a href="RakshakReport.jsp">Rakshak Report</a>'
+    		menu18[13]='<a href="SensorDetailRep.jsp">Sensor Detail Report</a>'
+    			menu18[14]='<a href="VehicleMaintenanceDueReport.jsp"> Vehicle Renewal Report</a>'
+    				menu18[15]='<a href="DoorSensorReport.jsp"> Door Sensor Report</a>'
+    					menu18[16]='<a href="Vehicleftpr.jsp"> Vehicle Ftpr Report</a>'
+    						menu18[17]='<a href="Usertag.jsp">Vehicle Tagging Report</a>'
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
+
+//////////////  dashboard for ACC , Nawany, NECC///////////////////
+menu8[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+menu8[1]='<a href="stopanalysis.jsp">Run Analysis</a>'
+menu8[2]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+menu8[3]='<a href="UploadExcelForm.jsp">Upload Trip Data</a>'
+menu8[4]='<a href="UploadTripClosureExcel.jsp">Upload Trip Closure Data</a>'
+menu8[5]='<a href="Fuelinfo.jsp">Fuel Report</a>'
+menu8[6]='<a href="Odometer.jsp">Odometer Report</a>'
+menu8[7]='<a href="AccDailyReport.jsp">Round Trip Report</a>'
+menu8[8]='<a href="LocationWiseStoppageReport.jsp">Location Wise Stoppage Report</a>'
+menu8[9]='<a href="roundtripsummary.jsp">Transit Report</a>'
+menu8[10]='<a href="addunit_ft.jsp">Vehicle Addtion form </a>'
+menu8[11]='<a href="TripTransit.jsp">Trip Transit Report</a>'
+menu8[12]='<a href="GeoEntryExitReport.jsp">GeofenceEntryExit</a>'
+	menu8[13]='<a href="GeofenceLocation1.jsp">GeofenceLocationReport</a>'
+	menu8[14]='<a href="RakshakReport.jsp">Rakshak Report</a>'
+		menu8[15]='<a href="SensorDetailRep.jsp">Sensor Detail Report</a>'
+			menu8[16]='<a href="VehicleMaintenanceDueReport.jsp"> Vehicle Renewal Report</a>'
+				menu8[17]='<a href="DoorSensorReport.jsp"> Door Sensor Report</a>'
+					menu8[18]='<a href="Vehicleftpr.jsp"> Vehicle Ftpr Report</a>'
+						menu8[19]='<a href="Usertag.jsp">Vehicle Tagging Report</a>'				
+///////////////////////////////////////////////////////////////////////////
+
+///////////////// dashboard for admin (ie typevalue=ALL)/////////////////////
+menu15[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+menu15[1]='<a href="stopanalysis.jsp">Run Analysis</a>'
+menu15[2]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+menu15[3]='<a href="UploadExcelForm.jsp">Upload Trip Data</a>'
+menu15[4]='<a href="UploadTripClosureExcel.jsp">Upload Trip Closure Data</a>'
+menu15[5]='<a href="Fuelinfo.jsp">Fuel Report</a>'
+menu15[6]='<a href="Odometer.jsp">Odometer Report</a>'
+menu15[7]='<a href="AccDailyReport.jsp">Round Trip Report</a>'
+menu15[8]='<a href="LocationWiseStoppageReport.jsp">Location Wise Stoppage Report</a>'
+menu15[9]='<a href="JRMRoute.jsp">JRM Route</a>'
+menu15[10]='<a href="roundtripsummary.jsp">Transit Report</a>'
+menu15[11]='<a href="androidCurrentPosition.jsp">Mobile Demo</a>'
+menu15[12]='<a href="CameraReport.jsp">POD Report</a>'
+menu15[13]='<a href="Intervention_report.jsp">Trip Violations Report</a>'
+menu15[14]='<a href="interventionreport_closed.jsp">Closed Violations Report</a>'
+menu15[15]='<a href="Reportforcleaner.jsp">Cleaner Entry</a>'
+menu15[16]='<a href="CameraSummaryReport.jsp">Camera Report</a>'
+menu15[17]='<a href="addunit_ft.jsp">Vehicle Addtion form </a>'
+menu15[18]='<a href="Standardinput.jsp">Standard Entry</a>'
+menu15[19]='<a href="Reportfornewroute.jsp">Route Entry</a>'
+menu15[20]='<a href="CameraInspectionReport.jsp">Camera Inspection</a>'
+menu15[21]='<a href="TempAnalysisReport.jsp">Temperature Analysis Report</a>'
+menu15[22]='<a href="CameraPodImageReport.jsp">Camera POD Report</a>'
+menu15[23]='<a href="Reportfordriver.jsp">Driver Entry</a>'
+menu15[24]='<a href="Licenseexpiryreport.jsp">Driver License Expiry Report</a>'
+menu15[25]='<a href="batterytheft.jsp">Battery Theft Report</a>'
+ menu15[26]='<a href="TripTransit.jsp">Trip Transit Report</a>'	
+menu15[27]='<a href="GeoEntryExitReport.jsp">GeofenceEntryExit</a>'	
+	menu15[28]='<a href="GeofenceLocation1.jsp">GeofenceLocationReport</a>'
+	menu15[29]='<a href="RakshakReport.jsp">Rakshak Report</a>'
+		menu15[30]='<a href="SensorDetailRep.jsp">Sensor Detail Report</a>'
+			menu15[31]='<a href="VehicleMaintenanceDueReport.jsp"> Vehicle Renewal Report</a>'
+				menu15[32]='<a href="DoorSensorReport.jsp"> Door Sensor Report</a>'
+				menu15[33]='<a href="Vehicleftpr.jsp"> Vehicle Ftpr Report</a>'
+					menu15[34]='<a href="Usertag.jsp">Vehicle Tagging Report</a>'
+/*menu15[0]='<a href="kmanalysis.jsp">KM Analysis Report</a>'
+menu15[1]='<a href="stopanalysis.jsp">Run Analysis</a>'
+menu15[2]='<a href="speedanalysis.jsp">Speed Analysis</a>'
+menu15[3]='<a href="UploadExcelForm.jsp">Upload Trip Data</a>'
+menu15[4]='<a href="UploadTripClosureExcel.jsp">Upload Trip Closure Data</a>'
+menu15[5]='<a href="custfuelfillreport.jsp">Fuel Report</a>'
+menu15[6]='<a href="Odometer.jsp">Odometer Report</a>'
+menu15[7]='<a href="jrmtoday.jsp">JRM Route</a>'*/
+
+///////////////////////////////////////////////////////////////////////////
+
+menu28[0]='<a href="VehicleIdleReport.jsp">Vehicle Intimation Report</a>'
+	menu28[1]='<a href="VehicleOfflineReport.jsp">Vehicle Offline Report</a>'
+		menu28[2]='<a href="ndintimationreport.jsp">ND Intimation Report</a>'	
+
+menu7[0]='<a href="kmdetails.jsp">Report</a>'
+menu7[1]='<a href="contrkmdets.jsp">Vendor Entry Form</a>'
+menu7[2]='<a href="exlkmdets.jsp">EXL Entry Form</a>'
+menu7[3]='<a href="vehnotreported.jsp">Vehicle Not Reported</a>'
+
+menu9[0]='<a href="changepass.jsp">Personal Details</a>' 
+menu9[1]='<a href="fuelentry.jsp">Fuel Entry</a>'
+menu9[2]='<a href="GeofenceLocation.jsp">Geofence Locations</a>'
+menu9[3]='<a href="vehmaintenance.jsp">Vehicle Maintenance Entry</a>'
+menu9[4]='<a href="paymentEntryForm.jsp">Payment Entry</a>'
+menu9[5]='<a href="VehMasterEntryForm.jsp">Vehicle Master Entry Form</a>'
+menu9[6]='<a href="createnewuser.jsp">Create User</a>'
+menu9[7]='<a href="sensorlabelentry.jsp">Sensor Label Entry </a>'
+
+		menu20[0]='<a href="changepass.jsp">Personal Details</a>' 
+		menu20[1]='<a href="fuelentry.jsp">Fuel Entry</a>'
+		menu20[2]='<a href="GeofenceLocation.jsp">Geofence Locations</a>'
+		menu20[3]='<a href="vehmaintenance.jsp">Vehicle Maintenance Entry</a>'
+		menu20[4]='<a href="paymentEntryForm.jsp">Payment Entry</a>'
+		menu20[5]='<a href="VehMasterEntryForm.jsp">Vehicle Master Entry Form</a>'
+		menu20[6]='<a href="createnewuser.jsp">Create User</a>'
+		menu20[7]='<a href="sensorlabelentry.jsp">Sensor Label Entry </a>'
+
+				menu22[0]='<a href="changepass.jsp">Personal Details</a>' 
+				menu22[1]='<a href="fuelentry.jsp">Fuel Entry</a>'
+				menu22[2]='<a href="GeofenceLocation.jsp">Geofence Locations</a>'
+				menu22[3]='<a href="vehmaintenance.jsp">Vehicle Maintenance Entry</a>'
+				menu22[4]='<a href="paymentEntryForm.jsp">Payment Entry</a>'
+				menu22[5]='<a href="VehMasterEntryForm.jsp">Vehicle Master Entry Form</a>'
+				menu22[6]='<a href="createnewuser.jsp">Create User</a>'
+				menu22[7]='<a href="addltgrp.jsp">Add/Delete Group </a>'
+				menu22[8]='<a href="sensorlabelentry.jsp">Sensor Label Entry </a>'
+
+					     menu29[0]='<a href="MainRouteProfileMaster.jsp">Route Profile Master</a>'  
+                         menu29[1]='<a href="FirstFuelRequest.jsp">Fuel Request</a>' 
+                        menu29[2]='<a href="Ad-hocRequest.jsp">Exception Ad-hoc Request</a>'
+						menu29[3]='<a href="AdditionalExcep.jsp">Additional Ad-hoc Request</a>'
+						menu29[4]='<a href="FuelRequestRep.jsp">View Fuel Request</a>'
+                        menu29[5]='<a href="KMPLFuelReport.jsp">KMPL Setting</a>'
+                        menu29[6]='<a href="Bufferset.jsp">Parameter Setting</a>'
+						menu29[7]='<a href="FuelCardMaster.jsp">Fuel Card Master</a>'
+						menu29[8]='<a href="FuelMasterReport.jsp">Fuel Rate Master</a>'
+						menu29[9]='<a href="FuelMasterHistoryReport.jsp">RateHistory Report</a>'
+						menu29[10]='<a href="NewFile2.jsp">Forecasting Report</a>'
+						
+						
+                                menu30[0]='<a href="MainRouteProfileMaster.jsp">Route Profile Master</a>' 
+                                menu30[1]='<a href="FirstFuelRequest.jsp">Fuel Request</a>' 
+								menu30[2]='<a href="Ad-hocRequest.jsp">Exception Ad-hoc Request</a>'
+								menu30[3]='<a href="AdditionalExcep.jsp">Additional Ad-hoc Request</a>'
+								menu30[4]='<a href="FuelRequestRep.jsp">View Fuel Request</a>'
+                                menu30[5]='<a href="KMPLFuelReport.jsp">KMPL Setting</a>'
+                                menu30[6]='<a href="Bufferset.jsp">Parameter Setting</a>'
+								menu30[7]='<a href="FuelCardMaster.jsp">Fuel Card Master</a>'
+								menu30[8]='<a href="FuelMasterReport.jsp">Fuel Rate Master</a>'
+								menu30[9]='<a href="FuelMasterHistoryReport.jsp">RateHistory Report</a>'
+								menu30[10]='<a href="NewFile2.jsp">Forecasting Report</a>'
+						
+	
+var menuwidth='165px' //default menu width
+var menubgcolor='#9db5e5'  //menu bgcolor
+var disappeardelay=250  //menu disappear speed onMouseout (in miliseconds)
+var hidemenu_onclick="yes" //hide menu when user clicks within menu?
+	var menuwidth='165px' //default menu width
+		var menubgcolor='lightyellow'  //menu bgcolor
+		var disappeardelay=250  //menu disappear speed onMouseout (in miliseconds)
+		var hidemenu_onclick="yes" //hide menu when user clicks within menu?
+/////No further editting needed
+
+var ie4=document.all
+var ns6=document.getElementById&&!document.all
+
+if (ie4||ns6)
+document.write('<div id="dropmenudiv" style="visibility:hidden;width:'+menuwidth+';background-color:'+menubgcolor+'" onMouseover="clearhidemenu()" onMouseout="dynamichide(event)"></div>')
+
+function getposOffset(what, offsettype){
+var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+var parentEl=what.offsetParent;
+while (parentEl!=null){
+totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+parentEl=parentEl.offsetParent;
+}
+return totaloffset;
+}
+
+
+function showhide(obj, e, visible, hidden, menuwidth){
+if (ie4||ns6)
+dropmenuobj.style.left=dropmenuobj.style.top="-750px"
+if (menuwidth!=""){
+dropmenuobj.widthobj=dropmenuobj.style
+dropmenuobj.widthobj.width=menuwidth
+}
+if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover")
+obj.visibility=visible
+else if (e.type=="click")
+obj.visibility=hidden
+}
+
+function iecompattest(){
+return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+}
+
+function clearbrowseredge(obj, whichedge){
+var edgeoffset=0
+if (whichedge=="rightedge"){
+var windowedge=ie4 && !window.opera? iecompattest().scrollLeft+iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+dropmenuobj.contentmeasure=dropmenuobj.offsetWidth
+if (windowedge-dropmenuobj.x < dropmenuobj.contentmeasure)
+edgeoffset=dropmenuobj.contentmeasure-obj.offsetWidth
+}
+else{
+var topedge=ie4 && !window.opera? iecompattest().scrollTop : window.pageYOffset
+var windowedge=ie4 && !window.opera? iecompattest().scrollTop+iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+dropmenuobj.contentmeasure=dropmenuobj.offsetHeight
+if (windowedge-dropmenuobj.y < dropmenuobj.contentmeasure){ //move up?
+edgeoffset=dropmenuobj.contentmeasure+obj.offsetHeight
+if ((dropmenuobj.y-topedge)<dropmenuobj.contentmeasure) //up no good either?
+edgeoffset=dropmenuobj.y+obj.offsetHeight-topedge
+}
+}
+return edgeoffset
+}
+
+function populatemenu(what){
+if (ie4||ns6)
+dropmenuobj.innerHTML=what.join("")
+}
+
+
+function dropdownmenu(obj, e, menucontents, menuwidth){
+	//alert(menucontents);
+if (window.event) event.cancelBubble=true
+else if (e.stopPropagation) e.stopPropagation()
+clearhidemenu()
+dropmenuobj=document.getElementById? document.getElementById("dropmenudiv") : dropmenudiv
+populatemenu(menucontents)
+
+if (ie4||ns6){
+showhide(dropmenuobj.style, e, "visible", "hidden", menuwidth)
+dropmenuobj.x=getposOffset(obj, "left")
+dropmenuobj.y=getposOffset(obj, "top")
+dropmenuobj.style.left=dropmenuobj.x-clearbrowseredge(obj, "rightedge")+"px"
+dropmenuobj.style.top=dropmenuobj.y-clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+"px"
+}
+
+return clickreturnvalue()
+}
+function clickreturnvalue(){
+if (ie4||ns6) return false
+else return true
+}
+
+function contains_ns6(a, b) {
+while (b.parentNode)
+if ((b = b.parentNode) == a)
+return true;
+return false;
+}
+
+function dynamichide(e){
+if (ie4&&!dropmenuobj.contains(e.toElement))
+delayhidemenu()
+else if (ns6&&e.currentTarget!= e.relatedTarget&& !contains_ns6(e.currentTarget, e.relatedTarget))
+delayhidemenu()
+}
+
+function hidemenu(e){
+if (typeof dropmenuobj!="undefined"){
+if (ie4||ns6)
+dropmenuobj.style.visibility="hidden"
+}
+}
+
+function delayhidemenu(){
+if (ie4||ns6)
+delayhide=setTimeout("hidemenu()",disappeardelay)
+}
+
+function clearhidemenu(){
+if (typeof delayhide!="undefined")
+clearTimeout(delayhide)
+}
+
+if (hidemenu_onclick=="yes")
+document.onclick=hidemenu
+
+</script>
+</head>
+<body>
+<div align="left"></div>
+
+
+</body>
+</html><html><head></head><body></body></html>

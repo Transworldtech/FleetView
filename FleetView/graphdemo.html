@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="js/graph.js"></SCRIPT>
+<TITLE>Graph Builder - Examples In Action</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<BLOCKQUOTE>
+
+<SCRIPT LANGUAGE="JavaScript">
+if(parseInt(navigator.appVersion) >= 4) {
+var q = new Graph(300,300);
+q.scale = 1;
+q.title = "Rating Graph";
+q.yLabel = "Exceptions";
+q.xLabel = "Month";
+q.setXScale("",1);
+q.setLegend("OverSpeed","Accelaration","Decelaration","Rating");
+q.addRow( 4,1,10,6.5, 3,  17, 5,6.5, 3,  7, 5,3.8);
+q.addRow( 2,4,   3, 2, 2, 2,  4,6.5, 3,  7, 5,8.4);
+q.addRow( 1,2,3,4,1,2,3,6.5, 3,  7, 5,9.6);
+q.addRow( 1,2,3,4,1,2,3,6.5, 3,  7, 5,9.6);
+q.build();
+} else {
+  document.writeln("<IMG ALT=\"Upgrade to Communicator!\" SRC=\"exb4.gif\">");
+}
+
+</SCRIPT>
+</BLOCKQUOTE>
+
+</body>
+<HTML>

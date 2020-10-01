@@ -1,0 +1,229 @@
+TD.menubg {
+	FONT-SIZE: 11px; BACKGROUND: #14505f; FONT-FAMILY: Verdana; HEIGHT: 16px
+}
+TD.menuborder {
+	FONT-SIZE: 11px; BACKGROUND: #1e4132; FONT-FAMILY: Verdana
+}
+TD.normal {
+	FONT-SIZE: 11px; BACKGROUND: #ffffff; FONT-FAMILY: Verdana
+}
+TD.tdarticleheading {
+	FONT-SIZE: 13px; FONT-FAMILY: Verdana
+}
+TD.tdingress {
+	FONT-SIZE: 12px; FONT-FAMILY: Verdana
+}
+TD.tdarticledate {
+	FONT-SIZE: 9px; FONT-FAMILY: Verdana
+}
+TD.main_withe_td {
+	FONT-SIZE: 11px; COLOR: #666666; FONT-FAMILY: Verdana
+}
+TD.form {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana
+}
+TD.Menu {
+	FONT-SIZE: 10px; BACKGROUND: #1e4132; COLOR: #ffffff; FONT-FAMILY: Verdana
+}
+TD.Header {
+	FONT-SIZE: 10px; BACKGROUND: #9bc3cd; COLOR: #ffffff; FONT-FAMILY: Verdana
+}
+TD.bottom_left {
+	FONT-SIZE: 11px;  COLOR: #666666; FONT-FAMILY: Verdana
+}
+TD.bottom_main {
+	FONT-SIZE: 11px;  COLOR: #000000; FONT-FAMILY: Verdana
+}
+TD.main_white_td {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana
+}
+TD.wizzard_path {
+	FONT-SIZE: 10px; VERTICAL-ALIGN: middle; COLOR: #4a8397; FONT-FAMILY: Verdana
+}
+TD.wizzard_menu {
+	FONT-SIZE: 10px; BACKGROUND: #155060; COLOR: #ffffff; FONT-FAMILY: Verdana
+}
+TD.wizzard_header {
+	FONT-SIZE: 10px; BACKGROUND: #9bc3cd; FONT-FAMILY: Verdana
+}
+.right_cont_date {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; COLOR: #96b4b9; FONT-FAMILY: Verdana
+}
+.right_cont {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; COLOR: #14505f; FONT-FAMILY: Verdana
+}
+.main_left_cont_white {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #666666; FONT-FAMILY: Verdana
+}
+.inner_left_right_side {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #14505f; FONT-FAMILY: Verdana
+}
+.inner_cont_white {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #666666; FONT-FAMILY: Verdana
+}
+.inner_cont_white_subheader {
+	FONT-WEIGHT: normal; FONT-SIZE: 14px; COLOR: #000000; FONT-FAMILY: Verdana
+}
+.inner_cont_white_header {
+	FONT-WEIGHT: bold; FONT-SIZE: 15px; COLOR: #000000; FONT-FAMILY: Verdana
+}
+.left_side_white {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; COLOR: #666666; FONT-FAMILY: Verdana
+}
+.left_side_white_header {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #14505f; FONT-FAMILY: Verdana
+}
+.main_left_cont_gray_head {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #14505f; FONT-FAMILY: Verdana
+}
+.main_left_cont_gray {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Verdana
+}
+.bottomHeader {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px;  COLOR: #14505f; FONT-FAMILY: Verdana
+}
+.bottom_left_Gray {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px;  COLOR: #666666; FONT-FAMILY: Verdana
+}
+.bottom_mainHeader {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px;  COLOR: #14505f; FONT-FAMILY: Verdana
+}
+.bottom_main_text {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Verdana
+}
+.footerupdated {
+	FONT-WEIGHT: normal; FONT-SIZE: 9px; COLOR: #96b4b9; FONT-FAMILY: Verdana
+}
+.likeheaderlink {
+	FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana
+}
+.wizzard_heading {
+	FONT-WEIGHT: bold; FONT-SIZE: 15px; COLOR: #14505f; FONT-FAMILY: Verdana
+}
+.wizzard_text {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #1e1e1e; FONT-FAMILY: Verdana
+}
+.wizzard_ingress {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #9b9b99; FONT-FAMILY: Verdana
+}
+.wizzard_path {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #666666; FONT-FAMILY: Verdana
+}
+.wizzard_caption {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Verdana
+}
+A:link {
+	FONT-SIZE: 11px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A:active {
+	FONT-SIZE: 11px; COLOR: #9b2823; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A:visited {
+	FONT-SIZE: 11px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 11px; COLOR: #0000ff; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.articleheading:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.articleheading:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #9b2823; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.articleheading:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.articleheading:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #0000ff; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.Top_Manual_Links:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 9px; COLOR: #46879b; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.Top_Manual_Links:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 9px; COLOR: #9b2823; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.Top_Manual_Links:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 9px; COLOR: #46879b; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.Top_Manual_Links:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 9px; COLOR: #0000ff; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.Left_Right_Side:link {
+	FONT-SIZE: 10px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.Left_Right_Side:active {
+	FONT-SIZE: 10px; COLOR: #9b2823; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.Left_Right_Side:visited {
+	FONT-SIZE: 10px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.Left_Right_Side:hover {
+	FONT-SIZE: 10px; COLOR: #0000ff; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.inner_left_right_side:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.inner_left_right_side:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #9b2823; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.inner_left_right_side:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.inner_left_right_side:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #0000ff; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.menu_text:link {
+	FONT-SIZE: 10px; VERTICAL-ALIGN: middle; COLOR: #ffffff; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.menu_text:active {
+	FONT-SIZE: 10px; VERTICAL-ALIGN: middle; COLOR: #ffffff; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.menu_text:visited {
+	FONT-SIZE: 10px; VERTICAL-ALIGN: middle; COLOR: #ffffff; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.menu_text:hover {
+	FONT-SIZE: 10px; VERTICAL-ALIGN: middle; COLOR: #ffffff; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.header:link {
+	FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.header:active {
+	FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.header:visited {
+	FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.header:hover {
+	FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.wizzard_path:link {
+	FONT-SIZE: 10px; COLOR: #979797; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.wizzard_path:active {
+	FONT-SIZE: 10px; COLOR: #979797; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.wizzard_path:visited {
+	FONT-SIZE: 10px; COLOR: #979797; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.wizzard_path:hover {
+	FONT-SIZE: 10px; COLOR: #979797; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.contactoss:link {
+	FONT-SIZE: 10px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.contactoss:active {
+	FONT-SIZE: 10px; COLOR: #9b2823; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+A.contactoss:visited {
+	FONT-SIZE: 10px; COLOR: #14505f; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+A.contactoss:hover {
+	FONT-SIZE: 10px; COLOR: #0000ff; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+
+.aboutus {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center center;
+	background-image: url(../IMAGES/bgchankya.gif);
+}

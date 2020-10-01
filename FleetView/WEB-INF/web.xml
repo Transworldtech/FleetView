@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<servlet>
+		<description>
+		</description>
+		<display-name>Sendingmails</display-name>
+		<servlet-name>Sendingmails</servlet-name>
+		<servlet-class>
+		com.fleetview.beans.Sendingmails</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>UploadExcelServlet</display-name>
+		<servlet-name>UploadExcelServlet</servlet-name>
+		<servlet-class>
+		com.fleetview.POIClasses.UploadExcelServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>UploadExcelServet1</display-name>
+		<servlet-name>UploadExcelServet1</servlet-name>
+		<servlet-class>
+		com.fleetview.POIClasses.UploadExcelServet1</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>UpdateExcelDataServlet</display-name>
+		<servlet-name>UpdateExcelDataServlet</servlet-name>
+		<servlet-class>
+		com.fleetview.POIClasses.UpdateExcelDataServlet</servlet-class>
+	</servlet>
+	
+		<servlet>
+		<description>
+		</description>
+		<display-name>UploadTripClosureExcelServlet</display-name>
+		<servlet-name>UploadTripClosureExcelServlet</servlet-name>
+		<servlet-class>
+		com.fleetview.POIClasses.UploadTripClosureExcelServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+<servlet-name>treeExample</servlet-name>
+<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+<load-on-startup>1</load-on-startup>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>treeExample</servlet-name>
+<url-pattern>*.htm</url-pattern>
+</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Sendingmails</servlet-name>
+		<url-pattern>/Sendingmails</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UploadExcelServlet</servlet-name>
+		<url-pattern>/UploadExcelServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UploadExcelServet1</servlet-name>
+		<url-pattern>/UploadExcelServet1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateExcelDataServlet</servlet-name>
+		<url-pattern>/UpdateExcelDataServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>UploadTripClosureExcelServlet</servlet-name>
+		<url-pattern>/UploadTripClosureExcelServlet</url-pattern>
+	</servlet-mapping>
+	
+	<resource-ref>
+		<description>MySql Data Source</description>
+		<res-ref-name>jdbc/gps</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref> 
+		
+	<display-name>Fleet View (Connection Pooled and 64 bit ready)</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+		<listener-class>
+			org.springframework.web.context.request.RequestContextListener
+		</listener-class>
+	</listener>
+  
+	<context-param>
+		<param-name>log4jExposeWebAppRoot</param-name>
+		<param-value>false</param-value>
+	</context-param>  
+		
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<context-param>
+    <description>This is a context parameter example</description>
+    <param-name>configuredUploadDir</param-name>
+    <param-value>/images1/savedimages</param-value>
+</context-param>
+	
+	<context-param>
+	<param-name>configuredUploadDir1</param-name>
+	<param-value>/usr/share/tomcat6/webapps/images1/savedimages</param-value>
+	</context-param>
+</web-app>
