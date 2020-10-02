@@ -8,6 +8,7 @@
 	response.addHeader("Content-Disposition", "attachment;filename="+filename);
 %>
 <%@ include file="../Connections/conn.jsp" %>
+
 <%!
 Connection conn, conn1;
 Statement st, st1, st2, stt, stmt1, stmt2, stmt3, stmt4, stmt5, stmt6,stmt7, stmt8, stmt9, stmt10,sten;
@@ -16,7 +17,7 @@ String startplace, triptype;
 
 
 NumberFormat nf = DecimalFormat.getNumberInstance();
-
+//test
 %>
 <%
 nf.setMaximumFractionDigits(2);
